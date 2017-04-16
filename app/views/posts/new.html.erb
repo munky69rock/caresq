@@ -1,0 +1,16 @@
+<h2>質問を投稿する</h2>
+
+<%= form_for @post do |f| %>
+
+  <div class="form-group">
+    <%= f.label :title, 'タイトル' %><br/>
+    <%= f.text_field :title, autofocus: true, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :body, '本文' %><br/>
+    <%= f.text_area :body, class: 'form-control' %>
+  </div>
+
+  <%= f.submit '投稿する', class: 'btn btn-primary' %>
+<% end %>
