@@ -1,14 +1,60 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Qampa</title>
+    <title>Q&amp;A</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csrf_meta_tags %>
 
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= yield :css %>
   </head>
 
   <body>
-    <%= yield %>
+
+    <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top">
+      <div class="container">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#global-header" aria-controls="global-header" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <%= link_to "Q&A", root_path, class: 'navbar-brand' %>
+
+        <div class="collapse navbar-collapse" id="global-header">
+          <div class="mr-auto"></div>
+          <ul class="navbar-nav">
+            <% if user_signed_in? %>
+              <li class="nav-item">
+                <a href="#" class="nav-link">投稿</a>
+              </li>
+              <li><span class="navbar-text">/</span></li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">マイページ</a>
+              </li>
+            <% else %>
+            <li class="nav-item">
+              <%= link_to '会員登録', new_user_registration_path, class: 'nav-link' %>
+            </li>
+            <li><span class="navbar-text">/</span></li>
+            <li class="nav-item">
+              <%= link_to 'ログイン', new_user_session_path, class: 'nav-link' %>
+            </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+    <div class="container">
+      <%= yield %>
+    </div>
+
+    <!-- jQuery first, then Tether, then Bootstrap JS. -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= yield :javascript %>
   </body>
 </html>
