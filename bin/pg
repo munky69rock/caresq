@@ -1,0 +1,29 @@
+#!/bin/bash
+
+set -e
+
+PG_DIR=tmp/postgres
+PG_LOG=log/postgres.log
+
+cmd="$1"
+
+if [ -z "$cmd" ]; then
+  echo "Usage: pg [start|stop]"
+  exit
+fi
+
+case $cmd in
+  init)
+    pg_ctl -D $PG_DIR init
+    ;;
+  start)
+    pg_ctl -D $PG_DIR -l $PG_LOG start
+    ;;
+  stop)
+    pg_ctl -D $PG_DIR stop
+    ;;
+  *)
+    echo "wrong command: $cmd"
+    exit 1
+    ;;
+esac
