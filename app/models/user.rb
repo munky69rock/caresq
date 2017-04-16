@@ -5,6 +5,8 @@ class User < ApplicationRecord
 
   enum gender: %i(male female)
 
+  has_one :address
+
   protected
   def confirmation_required?
     false
