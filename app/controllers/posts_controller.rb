@@ -1,10 +1,14 @@
 class PostsController < ApplicationController
+  include LoginRequirable
+  require_login except: [:index, :show]
+
   def index
     redirect_to root_path
   end
 
   def show
     @post = Post.find(params[:id])
+    @comment = Comment.new
   end
 
   def edit
