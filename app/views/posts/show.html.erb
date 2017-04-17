@@ -1,16 +1,23 @@
 <h2><%= @post.title %></h2>
+
 <div>
   <%= @post.body %>
+</div>
 
+<div>
   <% if @post.comments.present? %>
     <hr>
     <% @post.comments.each do |comment| %>
-      <p><%= comment.body %></p>
+      <p>
+        <%= comment.body %><br/>
+        <small><%= comment.user.name %></small>
+      </p>
     <% end %>
   <% end %>
+</div>
 
+<div>
   <hr>
-
   <%= form_for @comment do |f| %>
     <%= f.hidden_field :post_id %>
     <%= f.hidden_field :user_id %>

@@ -1,4 +1,7 @@
 class CommentsController < ApplicationController
+  include LoginRequirable
+  require_login only: [:create]
+
   def create
     @comment = Comment.new comment_params
     @post = @comment.post
