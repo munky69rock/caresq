@@ -17,6 +17,8 @@ Rails.application.routes.draw do
 
   root 'roots#index'
 
-  resources :posts
+  get '/:id', to: 'posts#show', as: :post
+  resources :posts, except: [:show]
+
   resources :comments, only: [:create]
 end
