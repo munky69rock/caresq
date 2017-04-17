@@ -1,5 +1,9 @@
-<h2>投稿一覧</h2>
-
 <% @posts.each do |post| %>
-  <p><%= link_to post.title, post_path(post) %></p>
+  <a class="card block-link mb-3" href="<%= post_path(post) %>">
+    <div class="card-block">
+      <h4 class="card-title"><%= post.title %></h4>
+      <p class="card-text"><%= truncate post.body %></p>
+      <p class="card-subtitle mb-2 text-muted"><%= post.user.name %></p>
+    </div>
+  </a>
 <% end %>

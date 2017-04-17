@@ -17,3 +17,13 @@
 body {
   padding-top: 5rem;
 }
+
+.block-link {
+  text-decoration: none;
+  display: block;
+  color: #292b2c;
+
+  &:hover, &:focus {
+    text-decoration: none;
+  }
+}
