@@ -2,7 +2,18 @@
 <div>
   <%= @post.body %>
 
+  <% if @post.comments.present? %>
+    <hr>
+    <% @post.comments.each do |comment| %>
+      <p><%= comment.body %></p>
+    <% end %>
+  <% end %>
+
+  <hr>
+
   <%= form_for @comment do |f| %>
+    <%= f.hidden_field :post_id %>
+    <%= f.hidden_field :user_id %>
     <div class="form-group">
       <%= f.label :body, 'コメント' %><br />
       <%= f.text_area :body, class: 'form-control' %>
