@@ -80,6 +80,7 @@ test:
 #
 production:
   <<: *default
-  database: qampa_production
-  username: qampa
-  password: <%= ENV['QAMPA_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
+  #database: qampa_production
+  #username: qampa
+  #password: <%= ENV['QAMPA_DATABASE_PASSWORD'] %>
