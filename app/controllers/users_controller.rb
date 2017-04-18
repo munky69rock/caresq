@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   include LoginRequirable
-  require_login
+  require_login only: [:index]
 
   def index
     @user = current_user

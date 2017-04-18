@@ -1,7 +1,7 @@
 <h2><%= @post.title %></h2>
 
 <%= link_to @post.user.name, user_path(@post.user) %>
-<% if own_post?(@post) %>
+<% if @post.by? current_user %>
   <%= link_to '編集', edit_post_path(@post) %> /
   <%= link_to '削除', { action: 'destroy', id: @post.id }, method: :delete, data: { confirm: '削除してもよいですか？' } %>
 <% end %>
@@ -19,7 +19,7 @@
         <p class="card-text"><%= comment.body %></p>
         <p class="card-subtitle mb-2 text-muted">
           <%= link_to comment.user.name, user_path(comment.user) %>
-          <% if own_comment?(comment) %>
+          <% if comment.by? current_user %>
             <%= link_to '編集', edit_comment_path(comment) %> /
             <%= link_to '削除', { action: 'destroy', id: comment.id }, method: :delete, data: { confirm: '削除してもよいですか？' } %>
           <% end %>

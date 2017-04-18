@@ -5,4 +5,8 @@ class Post < ApplicationRecord
 
   validates :title, presence: true
   validates :body, presence: true
+
+  def by?(user)
+    user.present? && self.user.id == user.id
+  end
 end
