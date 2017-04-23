@@ -20,6 +20,10 @@ class PostsController < ApplicationController
   end
 
   def create
+    unless current_user.confirmed?
+      return render :new
+    end
+
     @post = Post.new post_params
     @post.user_id = current_user.id
     if @post.save

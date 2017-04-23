@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Q&amp;A</title>
+    <title><%= yield(:title) || 'ケアスク' %></title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csrf_meta_tags %>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= yield :css %>
   </head>
 
@@ -19,7 +19,7 @@
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#global-header" aria-controls="global-header" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <%= link_to 'Q&A', root_path, class: 'navbar-brand' %>
+        <%= link_to 'ケアスク', root_path, class: 'navbar-brand' %>
 
         <div class="collapse navbar-collapse" id="global-header">
           <div class="mr-auto"></div>
@@ -45,7 +45,7 @@
         </div>
       </div>
     </nav>
-    
+
     <div class="container">
       <%= yield %>
     </div>

@@ -3,6 +3,10 @@ class CommentsController < ApplicationController
   require_login only: [:create]
 
   def create
+    unless current_user.confirmed?
+      return render 'posts/show'
+    end
+
     @comment = Comment.new comment_params
     @post = @comment.post
     if @comment.save
