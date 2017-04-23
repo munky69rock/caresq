@@ -32,7 +32,7 @@
 
   <div>
     <hr/>
-    <% unless current_user.confirmed? %>
+    <% unless current_user&.confirmed? %>
       <div class="alert alert-warning" role="alert">
         メールアドレスの確認をすると投稿できるようになります<br/>
         <small>メールが届かない場合は<%= link_to 'コチラ', new_confirmation_path(current_user) %></small>
@@ -45,7 +45,7 @@
         <%= f.label :body, 'コメント' %><br />
         <%= f.text_area :body, class: 'form-control' %>
       </div>
-      <%= f.submit 'コメントする', class: 'btn btn-primary', disabled: !current_user.confirmed? %>
+      <%= f.submit 'コメントする', class: 'btn btn-primary', disabled: !current_user&.confirmed? %>
     <% end %>
   </div>
 </div>
