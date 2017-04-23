@@ -1,23 +1,25 @@
-<h2>質問を投稿する</h2>
+<div class="container">
+  <h2>質問を投稿する</h2>
 
-<% unless current_user.confirmed? %>
-  <div class="alert alert-warning" role="alert">
-    メールアドレスの確認をすると投稿できるようになります<br/>
-    <small>メールが届かない場合は<%= link_to 'コチラ', new_confirmation_path(current_user) %></small>
-  </div>
-<% end %>
+  <% unless current_user.confirmed? %>
+    <div class="alert alert-warning" role="alert">
+      メールアドレスの確認をすると投稿できるようになります<br/>
+      <small>メールが届かない場合は<%= link_to 'コチラ', new_confirmation_path(current_user) %></small>
+    </div>
+  <% end %>
 
-<%= form_for @post do |f| %>
+  <%= form_for @post do |f| %>
 
-  <div class="form-group">
-    <%= f.label :title, 'タイトル' %><br/>
-    <%= f.text_field :title, autofocus: true, class: 'form-control' %>
-  </div>
+    <div class="form-group">
+      <%= f.label :title, 'タイトル' %><br/>
+      <%= f.text_field :title, autofocus: true, class: 'form-control' %>
+    </div>
 
-  <div class="form-group">
-    <%= f.label :body, '本文' %><br/>
-    <%= f.text_area :body, class: 'form-control' %>
-  </div>
+    <div class="form-group">
+      <%= f.label :body, '本文' %><br/>
+      <%= f.text_area :body, class: 'form-control' %>
+    </div>
 
-  <%= f.submit '投稿する', class: 'btn btn-primary', disabled: !current_user.confirmed? %>
-<% end %>
+    <%= f.submit '投稿する', class: 'btn btn-primary', disabled: !current_user.confirmed? %>
+  <% end %>
+</div>

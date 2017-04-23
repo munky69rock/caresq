@@ -1,9 +1,11 @@
-<% @posts.each do |post| %>
-  <a class="card block-link mb-3" href="<%= post_path(post) %>">
-    <div class="card-block">
-      <h4 class="card-title"><%= post.title %></h4>
-      <p class="card-text"><%= truncate post.body %></p>
-      <p class="card-subtitle mb-2 text-muted"><%= post.user.name %></p>
-    </div>
-  </a>
-<% end %>
+<div class="container">
+  <% @posts.each do |post| %>
+    <a class="card block-link mb-3" href="<%= post_path(post) %>">
+      <div class="card-block">
+        <h4 class="card-title"><%= post.title %></h4>
+        <p class="card-text"><%= truncate post.body %></p>
+        <p class="card-subtitle mb-2 text-muted"><%= post.user.name %></p>
+      </div>
+    </a>
+  <% end %>
+</div>

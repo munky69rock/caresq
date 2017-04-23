@@ -1,4 +1,26 @@
-<h2>マイページ</h2>
+<%= content_for :css do %>
+  <%= stylesheet_link_tag :profile, media: 'all', 'data-turbolinks-track': 'reload' %>
+<% end %>
 
-<p><%= @user.name %></p>
-<p><%= @user.description %></p>
+<div class="text-center main-image">
+  <img class="mx-auto img-thumbnail" src="https://api.adorable.io/avatars/285/<%= @user.email %>.png" alt="<%= @user.name %>">
+</div>
+
+<div class="container">
+  <ul class="nav justify-content-end">
+    <li class="nav-item">
+      <%= link_to '編集', edit_user_path(@user), class: 'nav-link' %>
+    </li>
+  </ul>
+
+  <div class="card">
+    <div class="card-block">
+      <h4 class="card-title"><%= @user.name %></h4>
+      <p class="card-text"><%= @user.description %></p>
+      <% if @user.address %>
+        <p class="card-text"><%= @user.address.postal_code %> <%= @user.address.prefecture %><%= @user.address.city %></p>
+      <% end %>
+      <!--<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>-->
+    </div>
+  </div>
+</div>

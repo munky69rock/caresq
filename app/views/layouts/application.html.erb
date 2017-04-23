@@ -7,6 +7,7 @@
     <%= csrf_meta_tags %>
 
     <!-- Bootstrap CSS -->
+    <link href="https://fonts.googleapis.com/earlyaccess/notosansjapanese.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= yield :css %>
@@ -28,11 +29,9 @@
               <li class="nav-item">
                 <%= link_to '投稿', new_post_path, class: 'nav-link' %>
               </li>
-              <li><span class="navbar-text">/</span></li>
               <li class="nav-item">
                 <%= link_to 'マイページ', users_path, class: 'nav-link' %>
               </li>
-              <li><span class="navbar-text">/</span></li>
               <li class="nav-item">
                 <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link' %>
               </li>
@@ -50,9 +49,7 @@
       </div>
     </nav>
 
-    <div class="container">
-      <%= yield %>
-    </div>
+    <%= yield %>
 
     <!-- jQuery first, then Tether, then Bootstrap JS. -->
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>

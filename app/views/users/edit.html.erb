@@ -1,0 +1,34 @@
+<div class="container">
+  <% if @error %>
+    <%= @error %>
+  <% end %>
+  <%= form_for @user, url: user_path(@user) do |f| %>
+
+    <div class="form-group">
+      <%= f.label :name, 'ユーザーネーム' %><br/>
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :description, '自己紹介' %><br/>
+      <%= f.text_area :description, class: 'form-control' %>
+    </div>
+
+    <%= f.fields_for @address do |address_form| %>
+      <div class="form-group">
+        <%= address_form.label :postal_code, '郵便番号' %>
+        <%= address_form.text_field :postal_code, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= address_form.label :prefecture, '都道府県' %>
+        <%= address_form.text_field :prefecture, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= address_form.label :city, '市区町村' %>
+        <%= address_form.text_field :city, class: 'form-control' %>
+      </div>
+    <% end %>
+
+    <%= f.submit '登録する', class: 'btn btn-primary' %>
+  <% end %>
+</div>
