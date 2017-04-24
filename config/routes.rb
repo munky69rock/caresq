@@ -21,5 +21,6 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :edit, :update]
 
   get '/:id', to: 'posts#show', as: :post
+  get '/posts/:id', to: redirect('/%{id}', status: 301), as: :modify_post
   resources :posts, except: [:show]
 end
