@@ -17,10 +17,23 @@ Rails.application.routes.draw do
 
   root 'roots#index'
 
-  resources :comments, only: [:create, :edit, :destroy]
-  resources :users, only: [:index, :show, :edit, :update]
-
-  get '/:id', to: 'posts#show', as: :post
-  get '/posts/:id', to: redirect('/%{id}', status: 301), as: :modify_post
+  get '/:id', to: 'posts#show', as: :post, constraints: { id: /\d+/ }
+  get '/posts/:id',
+      to: redirect('/%{id}', status: 301),
+      as: :modify_post,
+      constraints: { id: /\d+/ }
   resources :posts, except: [:show]
+
+  resources :comments, only: [:create, :edit, :destroy]
+
+  resources :users, only: [:show]
+  get :users, to: redirect('/user', status: 301)
+  resources :user, only: [] do
+    collection do
+      get :/, action: :show
+      get :edit
+      put :update
+      patch :update
+    end
+  end
 end
