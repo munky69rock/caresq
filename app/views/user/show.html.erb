@@ -31,7 +31,7 @@
       <a href="<%= post_path(post) %>" class="list-group-item list-group-item-action flex-column align-items-start">
         <div class="d-flex w-100 justify-content-between">
           <h5 class="mb-1"><%= post.title %></h5>
-          <small class="text-muted"><%= distance_of_time_in_words_to_now post.updated_at %></small>
+          <small class="text-muted"><%= distance_of_time_in_words_to_now post.updated_at %>前</small>
         </div>
         <p class="mb-1"><%= truncate post.body %></p>
       </a>

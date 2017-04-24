@@ -4,7 +4,10 @@
       <div class="card-block">
         <h4 class="card-title"><%= post.title %></h4>
         <p class="card-text"><%= truncate post.body %></p>
-        <p class="card-subtitle mb-2 text-muted"><%= post.user.name %></p>
+        <p class="card-subtitle mb-2 text-muted">
+          <%= post.user.name %>
+          <small><%= distance_of_time_in_words_to_now post.updated_at %>前</small>
+        </p>
       </div>
     </a>
   <% end %>
