@@ -5,12 +5,12 @@
     <%= devise_error_messages! %>
 
     <div class="form-container">
-      <%= f.label :email, 'メールアドレス' %><br />
+      <%= f.label :email %><br />
       <%= f.email_field :email, autofocus: true, class: 'form-control' %>
     </div>
 
     <div class="form-container">
-      <%= f.label :password, 'パスワード' %><br />
+      <%= f.label :password %><br />
       <%= f.password_field :password, autocomplete: 'off', class: 'form-control' %>
     </div>
 

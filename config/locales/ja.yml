@@ -1,0 +1,44 @@
+ja:
+  date:
+    order:
+      - :year
+      - :month
+      - :day
+    month_names:
+      -
+      - 1月
+      - 2月
+      - 3月
+      - 4月
+      - 5月
+      - 6月
+      - 7月
+      - 8月
+      - 9月
+      - 10月
+      - 11月
+      - 12月
+  activerecord:
+    models:
+      user: ユーザー
+    attributes:
+      user:
+        name: ユーザーネーム
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード(確認)
+        description: 自己紹介
+        birth_date: 生年月日
+        gender: 性別
+      user/gender:
+          male: 男性
+          female: 女性
+      address:
+        postal_code: 郵便番号
+        prefecture: 都道府県
+        city: 市区町村
+      post:
+        title: タイトル
+        body: 本文
+      comment:
+        body: コメント

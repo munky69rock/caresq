@@ -3,7 +3,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable,
          :validatable, :confirmable
 
-  enum gender: %i(male female)
+  enum gender: { male: 1, female: 2 }
 
   has_one :address
   has_many :posts
@@ -12,6 +12,7 @@ class User < ApplicationRecord
   validates :name, presence: true
 
   protected
+
   def confirmation_required?
     false
   end

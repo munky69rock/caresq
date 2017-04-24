@@ -5,26 +5,36 @@
   <%= form_for @user, url: user_path(@user) do |f| %>
 
     <div class="form-group">
-      <%= f.label :name, 'ユーザーネーム' %><br/>
+      <%= f.label :name %><br/>
       <%= f.text_field :name, class: 'form-control' %>
     </div>
 
     <div class="form-group">
-      <%= f.label :description, '自己紹介' %><br/>
+      <%= f.label :description %><br/>
       <%= f.text_area :description, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :birth_date %><br/>
+      <%= f.date_select :birth_date, class: 'form-control', use_month_numbers: true %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :gender %><br/>
+      <%= f.select :gender, User.genders.map{ |k, v| [User.human_attribute_name("gender.#{k}"), v] }, {}, class: 'form-control' %>
     </div>
 
     <%= f.fields_for @address do |address_form| %>
       <div class="form-group">
-        <%= address_form.label :postal_code, '郵便番号' %>
+        <%= address_form.label :postal_code %>
         <%= address_form.text_field :postal_code, class: 'form-control' %>
       </div>
       <div class="form-group">
-        <%= address_form.label :prefecture, '都道府県' %>
+        <%= address_form.label :prefecture %>
         <%= address_form.text_field :prefecture, class: 'form-control' %>
       </div>
       <div class="form-group">
-        <%= address_form.label :city, '市区町村' %>
+        <%= address_form.label :city %>
         <%= address_form.text_field :city, class: 'form-control' %>
       </div>
     <% end %>
