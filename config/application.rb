@@ -16,5 +16,7 @@ module Caresq
     # -- all .rb files in that directory are automatically loaded.
     config.i18n.default_locale = :ja
     config.i18n.fallbacks = [:en]
+
+    config.time_zone = 'Asia/Tokyo'
   end
 end
