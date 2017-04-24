@@ -1,4 +1,8 @@
+require 'extensions/time_extension'
+
 class User < ApplicationRecord
+  using TimeExtension
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable,
          :validatable, :confirmable
@@ -10,6 +14,11 @@ class User < ApplicationRecord
   has_many :comments
 
   validates :name, presence: true
+
+  def age(t = Time.current)
+    return nil if birth_date.nil?
+    t.years_from(birth_date)
+  end
 
   protected
 
