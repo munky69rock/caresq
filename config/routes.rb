@@ -31,7 +31,7 @@ Rails.application.routes.draw do
       constraints: { id: /\d+/ }
   resources :posts, except: [:show]
 
-  resources :comments, only: %i[create edit destroy]
+  resources :comments, only: %i[create edit update destroy]
 
   resources :users, only: [:show]
   get :users, to: redirect('/user', status: 301)

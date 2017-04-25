@@ -1,0 +1,15 @@
+<%= content_for :title, 'コメントを編集する' %>
+
+<div class="container">
+  <h2>コメントを編集する</h2>
+
+  <%= form_for @comment do |f| %>
+
+    <div class="form-group">
+      <%= f.label :body %><br/>
+      <%= f.text_area :body, class: 'form-control', rows: 10 %>
+    </div>
+
+    <%= f.submit '編集する', class: 'btn btn-primary' %>
+  <% end %>
+</div>

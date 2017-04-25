@@ -1,5 +1,6 @@
+<%= content_for :title, '質問を編集する' %>
 <div class="container">
-  <h2>質問を投稿する</h2>
+  <h2>質問を編集する</h2>
 
   <%= form_for @post, url: modify_post_path, method: :patch do |f| %>
     <div class="form-group">
@@ -12,6 +13,6 @@
       <%= f.text_area :body, class: 'form-control', rows: 10 %>
     </div>
 
-    <%= f.submit '投稿する', class: 'btn btn-primary', disabled: !current_user.confirmed? %>
+    <%= f.submit '編集する', class: 'btn btn-primary' %>
   <% end %>
 </div>

@@ -52,6 +52,6 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     return if @post.by? current_user
     raise ActionController::BadRequest,
-          "Attempt to modify other user's post: user:#{current_user.id},post:#{post.id}"
+          "Attempt to modify other user's post: user:#{current_user.id},post:#{@post.id}"
   end
 end

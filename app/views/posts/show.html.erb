@@ -51,7 +51,7 @@
       <%= f.hidden_field :user_id %>
       <div class="form-group">
         <%= f.label :body %><br />
-        <%= f.text_area :body, class: 'form-control' %>
+        <%= f.text_area :body, class: 'form-control', rows: 5 %>
       </div>
       <%= f.submit 'コメントする', class: 'btn btn-primary', disabled: current_user.nil? || !current_user.confirmed? %>
     <% end %>
