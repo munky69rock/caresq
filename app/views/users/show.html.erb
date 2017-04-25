@@ -11,7 +11,7 @@
   <div class="card">
     <div class="card-block">
       <h4 class="card-title"><%= @user.name %></h4>
-      <p class="card-text"><%= simple_format @user.description %></p>
+      <%= simple_format @user.description, class: 'card-text' %>
       <!--<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>-->
     </div>
   </div>
