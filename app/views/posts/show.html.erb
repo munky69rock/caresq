@@ -9,7 +9,9 @@
   <% end %>
 
   <div class="card mt-3">
-    <%= simple_format @post.body, wrapper: 'div', class: 'card-block' %>
+    <div class="card-block">
+      <%= simple_format @post.body, class: 'card-text' %>
+    </div>
   </div>
 
   <% if @post.comments.present? %>
