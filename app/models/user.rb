@@ -21,10 +21,4 @@ class User < ApplicationRecord
     return nil if birth_date.nil?
     t.years_from(birth_date)
   end
-
-  protected
-
-  def confirmation_required?
-    false
-  end
 end
