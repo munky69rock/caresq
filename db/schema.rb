@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20170416114803) do
     t.bigint "post_id", null: false
     t.bigint "user_id", null: false
     t.text "body", null: false
+    t.boolean "deleted", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_comments_on_post_id"
@@ -39,6 +40,7 @@ ActiveRecord::Schema.define(version: 20170416114803) do
     t.bigint "user_id", null: false
     t.string "title", null: false
     t.text "body", null: false
+    t.boolean "deleted", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_posts_on_user_id"

@@ -40,7 +40,10 @@ class PostsController < ApplicationController
     end
   end
 
-  def destroy; end
+  def destroy
+    @post.logical_delete
+    redirect_to root_path
+  end
 
   private
 

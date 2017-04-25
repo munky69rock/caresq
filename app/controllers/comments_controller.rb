@@ -3,7 +3,7 @@
 class CommentsController < ApplicationController
   include LoginRequirable
   require_login only: [:create]
-  before_action :assert_commented_by_current_user, only: %i[edit update]
+  before_action :assert_commented_by_current_user, only: %i[edit update destroy]
 
   def create
     return render 'posts/show' unless current_user.confirmed?
@@ -25,6 +25,12 @@ class CommentsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    post_id = @comment.post.id
+    @comment.logical_delete
+    redirect_to post_path(post_id)
   end
 
   private

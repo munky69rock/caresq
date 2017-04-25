@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Comment < ApplicationRecord
+  include LogicalDeletable
+
   belongs_to :post
   belongs_to :user
 
