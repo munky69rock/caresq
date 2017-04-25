@@ -17,7 +17,7 @@
 
     <div class="form-group">
       <%= f.label :body %><br/>
-      <%= f.text_area :body, class: 'form-control' %>
+      <%= f.text_area :body, class: 'form-control', rows: 10 %>
     </div>
 
     <%= f.submit '投稿する', class: 'btn btn-primary', disabled: !current_user.confirmed? %>

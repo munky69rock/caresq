@@ -16,8 +16,11 @@
   <body>
 
     <nav class="navbar navbar-toggleable-md navbar-light bg-faded fixed-top">
-      <div class="container">
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#global-header" aria-controls="global-header" aria-expanded="false" aria-label="Toggle navigation">
+      <%#
+       FIXME: navbar with container not working correctly now
+          div class="container"%>
+        <button class="navbar-toggler navbar-toggler-right" type="button"
+                data-toggle="collapse" data-target="#global-header" aria-controls="global-header" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <%= link_to 'ケアスク', root_path, class: 'navbar-brand' %>
@@ -45,7 +48,7 @@
             <% end %>
           </ul>
         </div>
-      </div>
+      <%# /div%>
     </nav>
 
     <%= yield %>
