@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'extensions/time_extension'
 
 class User < ApplicationRecord

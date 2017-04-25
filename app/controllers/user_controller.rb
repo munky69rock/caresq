@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class UserController < ApplicationController
   include LoginRequirable
-  require_login only: [:show, :edit, :update]
+  require_login only: %i[show edit update]
 
   def show
     @user = User.find(current_user.id)
@@ -9,26 +11,17 @@ class UserController < ApplicationController
 
   def edit
     @user = current_user
-    @address = current_user.address || Address.new(user_id: current_user.id)
+    @address = current_user.address || current_user.build_address
   end
 
   def update
-    @user = current_user
-    update_address = user_params[:address].to_h.any? { |_, v| v.present? }
-    @user.attributes = user_params.to_h.except(:address)
-    if update_address
-      if @user.address.present?
-        @user.address.update(user_params[:address])
-      else
-        @user.build_address(user_params[:address])
-      end
-    end
-    if @user.validate && (!update_address || @user.address.validate)
-      @user.save
-      @user.address.save if update_address
-      redirect_to users_path
+    @form = UserForm.new(current_user)
+    @form.attributes = user_params
+    if @form.validate
+      @form.save
+      redirect_to user_index_path
     else
-      @error = @user.errors.full_messages.join(',') + @user.address.errors.full_messages.join(',')
+      @error = @form.error_messages
       render :edit
     end
   end
@@ -41,7 +34,7 @@ class UserController < ApplicationController
       :description,
       :birth_date,
       :gender,
-      address: [:postal_code, :prefecture, :city]
+      address: %i[postal_code prefecture city]
     ).tap do |params|
       params[:gender] = params[:gender].to_i if params[:gender].present?
     end

@@ -1,11 +1,11 @@
+# frozen_string_literal: true
+
 class CommentsController < ApplicationController
   include LoginRequirable
   require_login only: [:create]
 
   def create
-    unless current_user.confirmed?
-      return render 'posts/show'
-    end
+    return render 'posts/show' unless current_user.confirmed?
 
     @comment = Comment.new comment_params
     @post = @comment.post

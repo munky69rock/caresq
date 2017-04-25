@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module TimeExtension
   refine ActiveSupport::TimeWithZone do
     def years_from(time = Time.current)

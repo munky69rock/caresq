@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ApplicationHelper
   def delete_link_to(name = nil, options = nil, html_options = {}, &block)
     html_options[:method] = :delete

@@ -1,27 +1,32 @@
+# frozen_string_literal: true
+
 module LoginRequirable
   extend ActiveSupport::Concern
 
   class Requirement
     def initialize(only: [], except: [])
-      @mode = if only.present?
-                :only
-              elsif except.present?
-                :except
-              else
-                :all
-              end
-      if only?
-        @actions = only.map(&:to_sym)
-      elsif except?
-        @actions = except.map(&:to_sym)
-      end
+      @mode = choose_mode(only, except)
+      @actions = only.map(&:to_sym) if only?
+      @actions = except.map(&:to_sym) if except?
     end
 
     def match?(action)
-      all? || (only? && @actions.include?(action.to_sym)) || (except? && @actions.exclude?(action.to_sym))
+      all? ||
+        (only? && @actions.include?(action.to_sym)) ||
+        (except? && @actions.exclude?(action.to_sym))
     end
 
     private
+
+    def choose_mode(only, except)
+      if only.present?
+        :only
+      elsif except.present?
+        :except
+      else
+        :all
+      end
+    end
 
     def only?
       @mode == :only
@@ -47,9 +52,8 @@ module LoginRequirable
 
   def do_require_login
     return if user_signed_in?
-    if self.class.instance_variable_get(:@login_requirement).match?(params[:action])
-      session[:return_to] = request.fullpath if request.get?
-      redirect_to new_user_session_url
-    end
+    return unless self.class.instance_variable_get(:@login_requirement).match?(params[:action])
+    session[:return_to] = request.fullpath if request.get?
+    redirect_to new_user_session_url
   end
 end

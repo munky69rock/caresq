@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   devise_for :users,
-             skip: [:sessions, :registrations],
+             skip: %i[sessions registrations],
              controllers: {
                passwords: 'users/passwords',
                confirmations: 'users/confirmations'
@@ -29,7 +31,7 @@ Rails.application.routes.draw do
       constraints: { id: /\d+/ }
   resources :posts, except: [:show]
 
-  resources :comments, only: [:create, :edit, :destroy]
+  resources :comments, only: %i[create edit destroy]
 
   resources :users, only: [:show]
   get :users, to: redirect('/user', status: 301)

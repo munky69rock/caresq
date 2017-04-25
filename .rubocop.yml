@@ -1,0 +1,39 @@
+AllCops:
+  Exclude:
+    - bin/*
+    - db/schema.rb
+    - vendor/**/*
+    - spec/fixtures/**/*
+    - tmp/**/*
+    - node_modules/**/*
+  DisplayCopNames: true
+
+Rails:
+  Enabled: true
+
+Metrics/LineLength:
+  Max: 100
+  IgnoredPatterns:
+    - '\A\s*# '
+
+Metrics/BlockLength:
+  Exclude:
+    - config/routes.rb
+    - config/environments/*
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/MethodLength:
+  Max: 20
+  Exclude:
+    - db/migrate/*.rb
+
+Metrics/AbcSize:
+  Max: 24
+
+Metrics/CyclomaticComplexity:
+  Max: 10
+
+Metrics/PerceivedComplexity:
+  Max: 8

@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class PostsController < ApplicationController
   include LoginRequirable
-  require_login except: [:index, :show]
+  require_login except: %i[index show]
 
   def index
     redirect_to root_path
@@ -20,9 +22,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    unless current_user.confirmed?
-      return render :new
-    end
+    return render :new unless current_user.confirmed?
 
     @post = Post.new post_params
     @post.user_id = current_user.id
@@ -33,11 +33,9 @@ class PostsController < ApplicationController
     end
   end
 
-  def update
-  end
+  def update; end
 
-  def destroy
-  end
+  def destroy; end
 
   private
 
