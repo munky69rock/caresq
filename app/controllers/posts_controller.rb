@@ -3,6 +3,7 @@
 class PostsController < ApplicationController
   include LoginRequirable
   require_login except: %i[index show]
+  before_action :assert_posted_by_current_user, only: %i[edit update destroy]
 
   def index
     redirect_to root_path
@@ -11,10 +12,6 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @comment = Comment.new post: @post, user: current_user
-  end
-
-  def edit
-    @post = Post.find(params[:id])
   end
 
   def new
@@ -33,7 +30,15 @@ class PostsController < ApplicationController
     end
   end
 
-  def update; end
+  def edit; end
+
+  def update
+    if @post.update(post_params)
+      redirect_to post_path(@post)
+    else
+      render :edit
+    end
+  end
 
   def destroy; end
 
@@ -41,5 +46,12 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :body)
+  end
+
+  def assert_posted_by_current_user
+    @post = Post.find(params[:id])
+    return if @post.by? current_user
+    raise ActionController::BadRequest,
+          "Attempt to modify other user's post: user:#{current_user.id},post:#{post.id}"
   end
 end
