@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe LoginRequirable::Requirement do
+describe ActionFilter do
   let(:requirement) { described_class.new(args) }
 
   context 'all mode' do
@@ -22,8 +22,4 @@ describe LoginRequirable::Requirement do
     it { expect(requirement.match?(:index)).to be false }
     it { expect(requirement.match?(:show)).to be true }
   end
-end
-
-describe LoginRequirable, type: :controller do
-  pending
 end

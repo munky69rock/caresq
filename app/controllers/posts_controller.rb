@@ -2,7 +2,11 @@
 
 class PostsController < ApplicationController
   include LoginRequirable
+  include RegistrationConfirmable
+
   require_login except: %i[index show]
+  confirm_registration except: %i[index show new]
+
   before_action :assert_posted_by_current_user, only: %i[edit update destroy]
 
   def index
