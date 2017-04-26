@@ -41,7 +41,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post.logical_delete
+    @post.soft_destroy!
     redirect_to root_path
   end
 

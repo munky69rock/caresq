@@ -13,21 +13,19 @@
     </div>
   </div>
 
-  <% if @post.comments.present? %>
-    <% @post.comments.each do |comment| %>
-      <div class="card mt-3">
-        <div class="card-block">
-          <%= simple_format comment.body, class: 'card-text' %>
-          <p class="card-subtitle mb-2 text-muted">
-            <%= link_to comment.user.name, user_path(comment.user) %>
-            <% if comment.by? current_user %>
-              <%= link_to '編集', edit_comment_path(comment) %> /
-              <%= delete_link_to '削除', comment_path(comment) %>
-            <% end %>
-          </p>
-        </div>
+  <% @post.comments.each do |comment| %>
+    <div class="card mt-3">
+      <div class="card-block">
+        <%= simple_format comment.body, class: 'card-text' %>
+        <p class="card-subtitle mb-2 text-muted">
+          <%= link_to comment.user.name, user_path(comment.user) %>
+          <% if comment.by? current_user %>
+            <%= link_to '編集', edit_comment_path(comment) %> /
+            <%= delete_link_to '削除', comment_path(comment) %>
+          <% end %>
+        </p>
       </div>
-    <% end %>
+    </div>
   <% end %>
 
   <div>

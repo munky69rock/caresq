@@ -29,7 +29,7 @@ class CommentsController < ApplicationController
 
   def destroy
     post_id = @comment.post.id
-    @comment.logical_delete
+    @comment.soft_destroy!
     redirect_to post_path(post_id)
   end
 

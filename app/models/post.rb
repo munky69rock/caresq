@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Post < ApplicationRecord
-  include LogicalDeletable
+  include SoftDeletable
 
   belongs_to :user
   has_many :comments
