@@ -44,13 +44,13 @@ module LoginRequirable
   module ClassMethods
     def require_login(only: [], except: [])
       @login_requirement = Requirement.new only: only, except: except
-      before_action :do_require_login
+      before_action :assert_logged_in
     end
   end
 
   private
 
-  def do_require_login
+  def assert_logged_in
     return if user_signed_in?
     return unless self.class.instance_variable_get(:@login_requirement).match?(params[:action])
     session[:return_to] = request.fullpath if request.get?
