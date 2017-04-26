@@ -31,3 +31,10 @@
   $ bundle exec rails db:migrate
   $ bundle exec rails s
   ```
+  
+ ## Development Utility
+ 
+ - generate dummy data
+   ```sh
+   $ rails dummy:generate
+   ```

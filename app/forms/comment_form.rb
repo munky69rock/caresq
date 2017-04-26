@@ -6,13 +6,16 @@ class CommentForm
     @post = @comment.post
   end
 
-  def save
+  def save!
     ActiveRecord::Base.transaction do
       @post.lock!
       @comment.save!
       @post.update_attributes! comment_count: @post.comment_count + 1
     end
-    true
+  end
+
+  def save
+    true.tap { save! }
   rescue => e
     Rails.logger.warn "Failed to create comment: #{e}"
     false
