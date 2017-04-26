@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20170416114803) do
     t.string "title", null: false
     t.text "body", null: false
     t.datetime "deleted_at"
+    t.integer "comment_count", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_posts_on_user_id"

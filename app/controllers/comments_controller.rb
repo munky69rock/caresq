@@ -8,10 +8,9 @@ class CommentsController < ApplicationController
   def create
     return render 'posts/show' unless current_user.confirmed?
 
-    @comment = Comment.new comment_params
-    @post = @comment.post
-    if @comment.save
-      redirect_to post_path(@comment.post_id)
+    @comment_form = CommentForm.new comment_params
+    if @comment_form.save
+      redirect_to post_path(comment_params[:post_id])
     else
       render 'posts/show'
     end
