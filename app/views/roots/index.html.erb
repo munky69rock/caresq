@@ -6,7 +6,10 @@
         <p class="card-text"><%= truncate post.body %></p>
         <p class="card-subtitle mb-2 text-muted">
           <%= post.user.name %>
-          <small><%= distance_of_time_in_words_to_now post.updated_at %></small>
+          <span class="float-right clearfix">
+            <small class="ml-2">コメント: <%= post.comments.count %></small>
+            <small class="ml-2"><%= distance_of_time_in_words_to_now post.updated_at %></small>
+          </span>
         </p>
       </div>
     </a>
