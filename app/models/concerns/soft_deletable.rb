@@ -21,6 +21,6 @@ module SoftDeletable
   end
 
   def soft_destroyed?
-    where(id: id).exists?
+    deleted_at?
   end
 end
