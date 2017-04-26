@@ -1,6 +1,5 @@
-<%= content_for :title, @post.title %>
 <div class="container">
-  <h2><%= @post.title %></h2>
+  <%= title @post.title %>
 
   <%= link_to @post.user.name, user_path(@post.user) %>
   <% if @post.by? current_user %>

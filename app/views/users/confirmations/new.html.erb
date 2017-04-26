@@ -1,5 +1,5 @@
 <div class="container">
-  <h2>確認メール再送</h2>
+  <%= title '確認メール再送' %>
   <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
     <%= devise_error_messages! %>
 

@@ -1,6 +1,5 @@
-<%= content_for :title, '質問を編集する' %>
 <div class="container">
-  <h2>質問を編集する</h2>
+  <%= title '質問を編集する' %>
 
   <%= form_for @post, url: modify_post_path, method: :patch do |f| %>
     <div class="form-group">
