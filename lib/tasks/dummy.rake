@@ -12,7 +12,7 @@ namespace :dummy do # rubocop:disable Metrics/BlockLength
           name: Faker::Name.unique.name,
           email: Faker::Internet.unique.email,
           password: Faker::Lorem.characters(10),
-          description: Faker::Lorem.paragraphs(10).join("\n\n"),
+          description: Faker::Lorem.paragraphs(rand(10) + 1).join("\n\n"),
           gender: User.genders.values.sample,
           birth_date: Faker::Date.birthday
         )
@@ -32,7 +32,7 @@ namespace :dummy do # rubocop:disable Metrics/BlockLength
       1.upto(count) do |i|
         Post.create!(
           title: [Faker::Book.title, Faker::Food.ingredient].join(' '),
-          body: Faker::Lorem.paragraphs(100).join("\n\n"),
+          body: Faker::Lorem.paragraphs((rand(5) + 1) * 10).join("\n\n"),
           user: random_user
         )
         puts "  created #{i} posts" if (i % 100).zero?
@@ -47,7 +47,7 @@ namespace :dummy do # rubocop:disable Metrics/BlockLength
       puts "start to create #{count} comments"
       1.upto(count) do |i|
         CommentForm.new(
-          body: Faker::Lorem.paragraphs(30).join("\n\n"),
+          body: Faker::Lorem.paragraphs(rand(10) + 1).join("\n\n"),
           post: random_post,
           user: random_user
         ).save!
