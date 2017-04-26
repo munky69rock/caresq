@@ -14,7 +14,8 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.includes(comments: [:user]).find(params[:id])
+    @post = Post.find(params[:id])
+    @comments = @post.comments.includes(:user).page params[:page]
     @comment = Comment.new post: @post, user: current_user
   end
 

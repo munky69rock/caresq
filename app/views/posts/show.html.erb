@@ -13,7 +13,7 @@
     </div>
   </div>
 
-  <% @post.comments.each do |comment| %>
+  <% @comments.each do |comment| %>
     <div class="card mt-3">
       <div class="card-block">
         <%= simple_format comment.body, class: 'card-text' %>
@@ -26,6 +26,7 @@
         </p>
       </div>
     </div>
+    <%= paginate @comments %>
   <% end %>
 
   <div>
