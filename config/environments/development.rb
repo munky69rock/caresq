@@ -34,16 +34,7 @@ Rails.application.configure do
   config.action_mailer.perform_caching = false
 
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
-  config.action_mailer.delivery_method = :file
-  config.action_mailer.file_settings = {
-    location: File.join('tmp', 'mails'),
-    smtp_settings: {
-      address: 'localhost',
-      port: 25,
-      domain: 'localhost.localdomain',
-      enable_starttls_auto: true
-    }
-  }
+  config.action_mailer.delivery_method = :letter_opener
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

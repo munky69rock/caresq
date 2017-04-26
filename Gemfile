@@ -34,6 +34,7 @@ group :development do
   gem 'bullet'
   gem 'pry-rails'
   gem 'rubocop'
+  gem 'letter_opener'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
