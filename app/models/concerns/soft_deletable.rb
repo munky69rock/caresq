@@ -16,7 +16,7 @@ module SoftDeletable
 
   def soft_destroy!
     run_callbacks(:soft_destroy) do
-      tap { touch :deleted_at }
+      tap { update_attributes deleted_at: Time.current }
     end
   end
 
