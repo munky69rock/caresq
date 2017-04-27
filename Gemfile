@@ -13,6 +13,7 @@ gem 'devise'
 gem 'faker' # FIXME
 gem 'jbuilder', '~> 2.5'
 gem 'kaminari'
+gem 'newrelic_rpm'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.7'
 gem 'rails', '~> 5.1.0.rc1'
