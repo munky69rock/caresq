@@ -10,6 +10,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'devise'
+gem 'faker' # FIXME
 gem 'jbuilder', '~> 2.5'
 gem 'kaminari'
 gem 'pg', '~> 0.18'
@@ -18,7 +19,6 @@ gem 'rails', '~> 5.1.0.rc1'
 gem 'sass-rails', github: 'rails/sass-rails'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
-gem 'faker' # FIXME
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]

@@ -9,6 +9,9 @@
         <p class="card-subtitle mb-2 text-muted">
           <%= post.user.name %>
           <span class="float-right clearfix">
+            <% post.tags.each do |tag| %>
+              <span class="badge badge-info"><%= tag.value %></span>
+            <% end %>
             <small class="ml-2">コメント: <%= post.comment_count %></small>
             <small class="ml-2"><%= distance_of_time_in_words_to_now post.updated_at %></small>
           </span>
