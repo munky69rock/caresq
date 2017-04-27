@@ -12,7 +12,7 @@ namespace :dummy do # rubocop:disable Metrics/BlockLength
           name: Faker::Name.unique.name,
           email: Faker::Internet.unique.email,
           password: Faker::Lorem.characters(10),
-          description: Faker::Lorem.paragraphs(rand1(10)).join("\n\n"),
+          description: random_paragraph_with_linebreak(rand1(10)),
           gender: User.genders.values.sample,
           birth_date: Faker::Date.birthday
         )
@@ -42,10 +42,10 @@ namespace :dummy do # rubocop:disable Metrics/BlockLength
       count = args[:count]
       puts "start to create #{count} posts"
       1.upto(count) do |i|
-        tags = Array.new(3).map { random_tag }
+        tags = Array.new(rand(4)).map { random_tag }
         Post.create!(
           title: [Faker::Book.title, Faker::Food.ingredient].join(' '),
-          body: Faker::Lorem.paragraphs(rand1(5) * 10).join("\n\n"),
+          body: random_paragraph_with_linebreak(rand1(5) * 10),
           user: random_user,
           tags: tags
         )
@@ -61,7 +61,7 @@ namespace :dummy do # rubocop:disable Metrics/BlockLength
       puts "start to create #{count} comments"
       1.upto(count) do |i|
         CommentForm.new(
-          body: Faker::Lorem.paragraphs(rand1(10)).join("\n\n"),
+          body: random_paragraph_with_linebreak(rand1(10)),
           post: random_post,
           user: random_user
         ).save!
@@ -82,6 +82,10 @@ namespace :dummy do # rubocop:disable Metrics/BlockLength
 
     def random_tag
       random_find Tag
+    end
+
+    def random_paragraph_with_linebreak(n)
+      Faker::Lorem.paragraphs(n).join("\n\n")
     end
 
     def random_post
