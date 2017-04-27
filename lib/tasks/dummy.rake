@@ -70,6 +70,21 @@ namespace :dummy do # rubocop:disable Metrics/BlockLength
       puts "finish to create #{count} comments"
     end
 
+    desc 'Generate random information'
+    task :information, [:count] => :environment do |_t, args|
+      args.with_defaults count: 30
+      count = args[:count]
+      puts "start to create #{count} information"
+      1.upto(count) do |i|
+        Information.new(
+          title: Faker::StarWars.unique.quote,
+          body: random_paragraph_with_linebreak(rand1(10)),
+        ).save!
+        puts "  created #{i} information" if (i % 100).zero?
+      end
+      puts "finish to create #{count} information"
+    end
+
     private
 
     def rand1(n)

@@ -43,4 +43,6 @@ Rails.application.routes.draw do
       patch :update
     end
   end
+
+  resources :information, only: %i[index show]
 end
