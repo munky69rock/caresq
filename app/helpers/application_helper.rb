@@ -11,6 +11,6 @@ module ApplicationHelper
 
   def title(text, size = 2)
     content_for :title, text
-    simple_format text, wrapper_tag: "h#{size}"
+    simple_format text, {}, wrapper_tag: "h#{size}"
   end
 end
