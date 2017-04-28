@@ -8,6 +8,7 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://fonts.googleapis.com/earlyaccess/notosansjapanese.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/earlyaccess/nicomoji.css" rel="stylesheet" />
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= yield :css %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -23,7 +24,7 @@
                 data-toggle="collapse" data-target="#global-header" aria-controls="global-header" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <%= link_to 'ケアスク', root_path, class: 'navbar-brand' %>
+        <%= link_to 'ケアスク', root_path, class: 'navbar-brand wf-nicomoji ' %>
 
         <div class="collapse navbar-collapse" id="global-header">
           <div class="mr-auto"></div>
