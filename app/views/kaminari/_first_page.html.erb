@@ -8,7 +8,7 @@
 -%>
 <li class="<%= 'disabled' if current_page.first? %> page-item prev">
   <%= link_to (current_page.first? ? '#' : url), class: 'page-link', 'aria-label': 'First', remote: remote do %>
-    <span aria-hidden="true">«</span>
+    <span aria-hidden="true" class="fa fa-angle-double-left"></span>
     <span class="sr-only">
       <%= t('views.pagination.first').html_safe %>
     </span>
