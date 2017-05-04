@@ -17,10 +17,17 @@
 
 @import "bootstrap";
 
+html {
+  position: relative;
+  min-height: 100%;
+}
+
 body {
   padding-top: 5rem;
+  margin-bottom: 60px;
   font-family: "Noto Sans Japanese",-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
   background-color: #eee;
+  min-height: 100%;
 }
 
 .wf-nicomoji {
@@ -46,6 +53,9 @@ $cs-primary-color-dark: #fbc02d;
 }
 
 .footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   background-color: $cs-primary-color;
 }
 
