@@ -11,7 +11,7 @@
               <img class="mx-auto align-top" src="https://api.adorable.io/avatars/28/<%= post.user.email %>.png" alt="<%= post.user.name %>" style="height: 30px;"/>
             </div>
             <div class="col-9">
-              <%= link_to post.user.name, user_path(post.user) %>さん
+              <%= link_to post.user.name, user_path(post.user), class: 'font-weight-bold' %>さん
             </div>
             <div class="col-2">
               <%= distance_of_time_in_words_to_now post.updated_at %>
@@ -32,7 +32,7 @@
             </div>
             <div class="col-10 text-right">
               <% post.tags.each do |tag| %>
-                <span class="badge badge-warning"><%= tag.value %></span>
+                <span class="badge badge-tag"><%= tag.value %></span>
               <% end %>
             </div>
           </div>
@@ -43,7 +43,7 @@
             </div>
             <div class="col-2">
               <span class="align-middle">
-                <i class="fa fa-comment"></i>&nbsp;<%= post.comment_count %>
+                <i class="fa fa-comment-o"></i>&nbsp;<%= post.comment_count %>
               </span>
             </div>
           </div>

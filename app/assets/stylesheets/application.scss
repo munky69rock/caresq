@@ -15,11 +15,21 @@
  *  require_self
  */
 
-$border-radius:    .14rem;
-$border-radius-lg: .18rem;
+$brand-primary: #1334CB;
+
+$border-radius:    .12rem;
+$border-radius-lg: .14rem;
 $border-radius-sm: .1rem;
 $navbar-toggler-border-radius: 0;
 $navbar-light-toggler-border: transparent;
+
+$cs-primary-color-light: #ffe47a;
+$cs-primary-color: #ffd328;
+$cs-primary-color-dark: #ddb103;
+
+@mixin cs-box-shadow {
+  box-shadow: 0 4px 4px #ccc;
+}
 
 @import "bootstrap";
 
@@ -40,9 +50,6 @@ body {
   font-family: "Nico Moji", sans-serif;
 }
 
-$cs-primary-color: #ffeb3b;
-$cs-primary-color-dark: #fbc02d;
-
 .navbar {
   background-color: $cs-primary-color;
   box-shadow: 0 2px 2px $cs-primary-color-dark;
@@ -53,13 +60,24 @@ $cs-primary-color-dark: #fbc02d;
   bottom: 0;
   width: 100%;
   background-color: $cs-primary-color;
+  box-shadow: 0 -2px 2px $cs-primary-color-dark inset;
 }
+
+.pagination li {
+  @include cs-box-shadow();
+}
+
+.badge-tag {
+  background-color: $cs-primary-color;
+  color: #444;
+}
+
 
 .post-list {
   &__item {
     padding: 16px;
     background-color: #fff;
-    box-shadow: 0 4px 4px #ccc;
+    @include cs-box-shadow();
     margin-bottom: 16px;
 
     &-wrapper {
@@ -74,6 +92,7 @@ $cs-primary-color-dark: #fbc02d;
   &__content {
     padding: 32px;
     background-color: #fff;
+    @include cs-box-shadow();
 
     &-wrapper {
       @include media-breakpoint-down(xs) {
@@ -87,6 +106,7 @@ $cs-primary-color-dark: #fbc02d;
   &__item {
     padding: 32px;
     background-color: #fff;
+    @include cs-box-shadow();
 
     &-wrapper {
       @include media-breakpoint-down(xs) {
