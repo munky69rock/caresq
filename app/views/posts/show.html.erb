@@ -1,62 +1,149 @@
+<%= content_for :title, truncate(@post.body) %>
+
 <div class="container">
-  <%= title @post.title %>
-  <span class="float-right clearfix">
-    <% @post.tags.each do |tag| %>
-      <span class="badge badge-info"><%= tag.value %></span>
-    <% end %>
-  </span>
 
-  <%= link_to @post.user.name, user_path(@post.user) %>
-  <% if @post.by? current_user %>
-    <%= link_to '編集', edit_post_path(@post) %> /
-    <%= delete_link_to '削除', modify_post_path(@post) %>
-  <% end %>
+  <div class="row">
+    <div class="offset-0 offset-sm-0 offset-md-1 offset-lg-2 offset-xl-2"></div>
+    <div class="post-detail__content-wrapper col-12 col-sm-12 col-md-10 col-lg-8 col-xl-8">
+      <div class="post-detail__content">
 
-  <div class="card mt-3">
-    <div class="card-block">
-      <%= simple_format @post.body, class: 'card-text' %>
+        <div class="row mb-2" style="height: 30px; line-height: 30px;">
+          <div class="col-1">
+            <img class="mx-auto align-top" src="https://api.adorable.io/avatars/28/<%= @post.user.email %>.png" alt="<%= @post.user.name %>" style="height: 30px;"/>
+          </div>
+          <div class="col-9">
+            <%= link_to @post.user.name, user_path(@post.user) %>さん
+          </div>
+          <div class="col-2">
+            <%= distance_of_time_in_words_to_now @post.updated_at %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <%= simple_format @post.body %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12 text-right">
+            <% @post.tags.each do |tag| %>
+                <span class="badge badge-warning"><%= tag.value %></span>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-10">
+            <% if @post.by? current_user %>
+              <%= link_to '編集', edit_post_path(@post) %> /
+              <%= delete_link_to '削除', modify_post_path(@post) %>
+            <% end %>
+          </div>
+          <div class="col-2 text-right">
+            <span class="align-middle">
+              <i class="fa fa-comment"></i>&nbsp;<%= @post.comment_count %>
+            </span>
+          </div>
+        </div>
+
+      </div>
     </div>
+    <div class="offset-0 offset-sm-0 offset-md-1 offset-lg-2 offset-xl-2"></div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="offset-0 offset-sm-0 offset-md-1 offset-lg-2 offset-xl-2"></div>
+    <div class="col-12 col-sm-12 col-md-10 col-lg-8 col-xl-8">
+      <% if current_user.nil? %>
+        <div class="alert alert-warning" role="alert">
+          <%= link_to '会員登録', new_user_registration_path %>
+          または
+          <%= link_to 'ログイン', new_user_session_path %>
+          をすると投稿できるようになります<br/>
+        </div>
+      <% elsif !current_user.confirmed? %>
+        <div class="alert alert-warning" role="alert">
+          メールアドレスの確認をすると投稿できるようになります<br/>
+          <small>メールが届かない場合は<%= link_to 'コチラ', new_confirmation_path(current_user) %></small>
+        </div>
+      <% end %>
+
+      <%= form_for @comment do |f| %>
+        <%= f.hidden_field :post_id %>
+        <%= f.hidden_field :user_id %>
+        <div class="form-group">
+          <%= f.label :body %><br />
+          <%= f.text_area :body, class: 'form-control', rows: 5 %>
+        </div>
+        <%= f.submit 'コメントする', class: 'btn btn-primary btn-block', disabled: current_user.nil? || !current_user.confirmed? %>
+      <% end %>
+
+    </div>
+    <div class="offset-0 offset-sm-0 offset-md-1 offset-lg-2 offset-xl-2"></div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="offset-0 offset-sm-0 offset-md-1 offset-lg-2 offset-xl-2"></div>
+    <div class="comment-list__item-wrapper col-12 col-sm-12 col-md-10 col-lg-8 col-xl-8">
+      <h5><%= @post.comment_count %>件のコメント</h5>
+    </div>
+    <div class="offset-0 offset-sm-0 offset-md-1 offset-lg-2 offset-xl-2"></div>
   </div>
 
   <% @comments.each do |comment| %>
-    <div class="card mt-3">
-      <div class="card-block">
-        <%= simple_format comment.body, class: 'card-text' %>
-        <p class="card-subtitle mb-2 text-muted">
-          <%= link_to comment.user.name, user_path(comment.user) %>
-          <% if comment.by? current_user %>
-            <%= link_to '編集', edit_comment_path(comment) %> /
-            <%= delete_link_to '削除', comment_path(comment) %>
-          <% end %>
-        </p>
+    <div class="row mt-3">
+      <div class="offset-0 offset-sm-0 offset-md-1 offset-lg-2 offset-xl-2"></div>
+      <div class="comment-list__item-wrapper col-12 col-sm-12 col-md-10 col-lg-8 col-xl-8">
+        <div class="comment-list__item">
+          <div class="row mb-2" style="height: 30px; line-height: 30px;">
+            <div class="col-1">
+              <img class="mx-auto align-top" src="https://api.adorable.io/avatars/28/<%= comment.user.email %>.png" alt="<%= comment.user.name %>" style="height: 30px;"/>
+            </div>
+            <div class="col-9">
+              <%= link_to comment.user.name, user_path(comment.user) %>さん
+            </div>
+            <div class="col-2">
+              <%= distance_of_time_in_words_to_now comment.updated_at %>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12">
+              <%= simple_format comment.body %>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-10">
+              <% if comment.by? current_user %>
+                <%= link_to '編集', edit_comment_path(comment) %> /
+                <%= delete_link_to '削除', comment_path(comment) %>
+              <% end %>
+            </div>
+
+            <div class="col-2">
+              <span class="align-middle">
+              <i class="fa fa-star"></i>
+            </span>
+            </div>
+          </div>
+
+        </div>
       </div>
+      <div class="offset-0 offset-sm-0 offset-md-1 offset-lg-2 offset-xl-2"></div>
     </div>
+
     <%= paginate @comments %>
   <% end %>
 
-  <div>
-    <hr/>
-    <% if current_user.nil? %>
-      <div class="alert alert-warning" role="alert">
-        <%= link_to '会員登録', new_user_registration_path %>
-        または
-        <%= link_to 'ログイン', new_user_session_path %>
-        をすると投稿できるようになります<br/>
-      </div>
-    <% elsif !current_user.confirmed? %>
-      <div class="alert alert-warning" role="alert">
-        メールアドレスの確認をすると投稿できるようになります<br/>
-        <small>メールが届かない場合は<%= link_to 'コチラ', new_confirmation_path(current_user) %></small>
-      </div>
-    <% end %>
-    <%= form_for @comment do |f| %>
-      <%= f.hidden_field :post_id %>
-      <%= f.hidden_field :user_id %>
-      <div class="form-group">
-        <%= f.label :body %><br />
-        <%= f.text_area :body, class: 'form-control', rows: 5 %>
-      </div>
-      <%= f.submit 'コメントする', class: 'btn btn-primary', disabled: current_user.nil? || !current_user.confirmed? %>
-    <% end %>
+  <div class="row mt-4">
+    <div class="offset-0 offset-sm-0 offset-md-1 offset-lg-2 offset-xl-2"></div>
+    <div class="comment-list__item-wrapper col-12 col-sm-12 col-md-10 col-lg-8 col-xl-8">
+      <i class="fa fa-chevron-left"></i>
+      <%= link_to '質問一覧に戻る', root_path %>
+    </div>
+    <div class="offset-0 offset-sm-0 offset-md-1 offset-lg-2 offset-xl-2"></div>
   </div>
+
 </div>
