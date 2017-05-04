@@ -78,7 +78,7 @@ namespace :dummy do # rubocop:disable Metrics/BlockLength
       1.upto(count) do |i|
         Information.new(
           title: Faker::StarWars.unique.quote,
-          body: random_paragraph_with_linebreak(rand1(10)),
+          body: random_paragraph_with_linebreak(rand1(10))
         ).save!
         puts "  created #{i} information" if (i % 100).zero?
       end
