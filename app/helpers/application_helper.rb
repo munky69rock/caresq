@@ -13,4 +13,9 @@ module ApplicationHelper
     content_for :title, text
     simple_format text, {}, wrapper_tag: "h#{size}"
   end
+
+  def truncate_l(text, options = {}, &block)
+    options[:length] ||= 250
+    truncate(text, options, &block)
+  end
 end

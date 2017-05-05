@@ -61,7 +61,7 @@
         <div class="post-detail__content">
           <div class="row">
             <div class="col-12">
-              <%= simple_format truncate(post.body) %>
+              <%= simple_format truncate_l(post.body) %>
             </div>
           </div>
 
@@ -119,7 +119,7 @@
 
           <div class="row">
             <div class="col-12">
-              <%= simple_format truncate(comment.post.body) %>
+              <%= simple_format truncate_l(comment.post.body) %>
             </div>
           </div>
         </div>
