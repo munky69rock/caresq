@@ -61,6 +61,16 @@ body {
   width: 100%;
   background-color: $cs-primary-color;
   box-shadow: 0 -2px 2px $cs-primary-color-dark inset;
+
+  a {
+    font-size: .8rem;
+    color: rgba(0, 0, 0, 0.5);
+    padding: .5rem;
+
+    &:hover {
+      color: rgba(0, 0, 0, 0.7);
+    }
+  }
 }
 
 .pagination li {

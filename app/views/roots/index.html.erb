@@ -8,13 +8,13 @@
 
           <div class="row mb-2" style="height: 30px; line-height: 30px;">
             <div class="col-1">
-              <img class="mx-auto align-top" src="https://api.adorable.io/avatars/28/<%= post.user.email %>.png" alt="<%= post.user.name %>" style="height: 30px;"/>
+              <img class="mx-auto align-top rounded-circle" src="https://api.adorable.io/avatars/28/<%= post.user.email %>.png" alt="<%= post.user.name %>" style="height: 30px;"/>
             </div>
             <div class="col-9">
               <%= link_to post.user.name, user_path(post.user), class: 'font-weight-bold' %>さん
             </div>
             <div class="col-2">
-              <%= distance_of_time_in_words_to_now post.updated_at %>
+              <small><%= distance_of_time_in_words_to_now post.updated_at %></small>
             </div>
           </div>
 

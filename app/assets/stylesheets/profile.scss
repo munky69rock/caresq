@@ -1,9 +1,39 @@
 body {
   padding-top: 3.4rem!important;
 }
-.main-image {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  background: -webkit-linear-gradient(to right, #EAECC6, #2BC0E4);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #EAECC6, #2BC0E4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+.profile-top {
+  position: relative;
+
+  &__bg-top {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background: -webkit-linear-gradient(to right, #EAECC6, #2BC0E4);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #EAECC6, #2BC0E4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    height: 10rem;
+  }
+
+  &__image {
+    position: absolute;
+    width: 12rem;
+    top: 4rem;
+    left: 0;
+    right: 0;
+    z-index: 100;
+  }
+
+  &__bg-bottom {
+    background-color: #fff;
+    height: 6rem;
+    &-wrapper {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.profile-main {
+  &__container {
+    background-color: #fff;
+
+  }
 }

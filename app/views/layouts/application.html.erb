@@ -62,7 +62,14 @@
     <%= yield %>
 
     <footer class="footer">
-      <div class="container py-4"></div>
+      <div class="container py-2">
+        <ul class="nav justify-content-center">
+          <li class="nav-item"><a href="#" class="nav-link">運営会社</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">プライバシー</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">規約</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">FAQ</a></li>
+        </ul>
+      </div>
     </footer>
     <%= yield :javascript %>
   </body>
