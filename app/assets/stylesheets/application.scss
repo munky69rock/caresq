@@ -129,3 +129,18 @@ body {
 .hidden {
   display: none;
 }
+
+.pagination-fill {
+  .page-item {
+    flex: 1 1 auto;
+    text-align: center;
+  }
+  .page-link {
+    padding: 0.75rem 0;
+  }
+  &-wrapper {
+    @include media-breakpoint-down(xs) {
+      padding: 0;
+    }
+  }
+}
