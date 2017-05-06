@@ -29,7 +29,7 @@ class ApplicationUrl
   attr_reader :url
 
   def correct_attr!(key)
-    value = request.send(key)
+    value = instance_variable_get("@#{key}")
     return if Settings.send(key).nil? || Settings.send(key) == value
     @url.send("#{key}=", Settings.send(key))
     @corrected = true
