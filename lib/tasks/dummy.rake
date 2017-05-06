@@ -42,7 +42,7 @@ namespace :dummy do # rubocop:disable Metrics/BlockLength
       count = args[:count]
       puts "start to create #{count} posts"
       1.upto(count) do |i|
-        tags = Array.new(rand(4)).map { random_tag }.uniq { |t| t.id }
+        tags = Array.new(rand(4)).map { random_tag }.uniq(&:id)
         Post.create!(
           title: [Faker::Book.title, Faker::Food.ingredient].join(' '),
           body: random_paragraph_with_linebreak(rand1(5) * 10),
