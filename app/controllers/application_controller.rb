@@ -2,16 +2,14 @@
 
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  before_action :verify_domain
+  before_action :verify_request_url
 
   private
 
-  def verify_domain
-    domain = request.domain
-    return if Settings.domain.nil? || Settings.domain == domain
-    url = URI.parse(request.original_url)
-    url.host = Settings.domain
-    redirect_to url.to_s, status: 301
+  def verify_request_url
+    url = ApplicationUrl.new(request)
+    url.correct!
+    redirect_to url.to_s, status: 301 if url.corrected?
   end
 
   def after_sign_in_path_for(_resource)
