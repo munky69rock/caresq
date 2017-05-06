@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
     domain = request.domain
     return if Settings.domain.nil? || Settings.domain == domain
     url = URI.parse(request.original_url)
-    url.domain = Settings.domain
+    url.host = Settings.domain
     redirect_to url.to_s, status: 301
   end
 
