@@ -1,4 +1,18 @@
 <%= content_for :title, truncate(@post.body) %>
+<%= content_for :javascript do %>
+  <script>
+    (function() {
+      $(".comment-edit-btn,.comment-edit-cancel-btn").on('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var id = $(this).data("id");
+        $(".comment-view-" + id).toggleClass("hidden");
+        $(".comment-form-" + id).toggleClass("hidden");
+        $(".comment-control-" + id).toggleClass("hidden");
+      });
+    })();
+  </script>
+<% end %>
 
 <div class="post-detail container">
 
@@ -90,6 +104,7 @@
       <div class="offset-0 offset-sm-0 offset-md-1 offset-lg-2 offset-xl-2"></div>
       <div class="comment-list__item-wrapper col-12 col-sm-12 col-md-10 col-lg-8 col-xl-8">
         <div class="comment-list__item">
+
           <div class="row mb-2" style="height: 30px; line-height: 30px;">
             <div class="col-1">
               <img class="mx-auto align-top rounded-circle" src="https://api.adorable.io/avatars/28/<%= comment.user.email %>.png" alt="<%= comment.user.name %>" style="height: 30px;"/>
@@ -102,18 +117,35 @@
             </div>
           </div>
 
-          <div class="row">
+          <div class="comment-view-<%= comment.id %> row">
             <div class="col-12">
               <%= simple_format comment.body %>
             </div>
           </div>
 
+          <% if comment.by? current_user %>
+          <div class="comment-form-<%= comment.id %> row hidden">
+            <div class="col-12">
+              <%= form_for comment do |f| %>
+                <div class="form-group">
+                  <%= f.text_area :body, class: 'form-control', rows: 10 %>
+                </div>
+                <%= f.submit '更新', class: 'btn btn-primary' %>
+                <a href="#" class="comment-edit-cancel-btn btn btn-secondary" data-id="<%= comment.id %>">キャンセル</a>
+              <% end %>
+            </div>
+          </div>
+          <% end %>
+
           <div class="row">
             <div class="col-10">
-              <% if comment.by? current_user %>
-                <%= link_to '編集', edit_comment_path(comment) %> /
-                <%= delete_link_to '削除', comment_path(comment) %>
-              <% end %>
+              <div class="comment-control-<%= comment.id %>">
+                <% if comment.by? current_user %>
+                  <%= link_to '編集', '#', class: 'comment-edit-btn', data: { id: comment.id } %><!--
+                    -->・<!--
+                  --><%= delete_link_to '削除', comment_path(comment) %>
+                <% end %>
+              </div>
             </div>
 
             <div class="col-2">

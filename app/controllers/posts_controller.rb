@@ -15,7 +15,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @comments = @post.comments.includes(:user).page params[:page]
+    @comments = @post.comments.includes(:user).order(updated_at: :desc).page params[:page]
     @comment = Comment.new post: @post, user: current_user
   end
 

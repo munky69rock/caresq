@@ -9,8 +9,7 @@ class ApplicationController < ActionController::Base
   private
 
   def verify_request_url
-    url = ApplicationUrl.new(request)
-    url.correct!
+    url = ApplicationUrl.new(request).tap(&:correct!)
     redirect_to url.to_s, status: 301 if url.corrected?
   end
 
