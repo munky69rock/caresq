@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'application_url'
+
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :verify_request_url
