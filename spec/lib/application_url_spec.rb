@@ -4,54 +4,51 @@ require 'rails_helper'
 require 'application_url'
 
 describe ApplicationUrl do
-  MockRequest = Struct.new(:original_url, :scheme, :host)
-  MockSettings = Struct.new(:scheme, :host)
+  OK = {
+    scheme: 'https',
+    host: 'www.caresq.jp'
+  }.freeze
 
-  let(:host) {}
-  let(:scheme) {}
+  NG = {
+    scheme: 'http',
+    host: 'caresq.herokuapp.com'
+  }.freeze
+
+  OK.keys.each do |key|
+    let(key) { OK[key] }
+  end
   let(:path) { '/posts/1?foo=bar' }
   let(:domain) { "#{scheme}://#{host}" }
   let(:original_url) { "#{scheme}://#{host}#{path}" }
-  let(:request) { MockRequest.new(original_url, scheme, host) }
-  let(:settings) { MockSettings.new }
+  let(:request) { Struct.new(:original_url, :scheme, :host).new(original_url, scheme, host) }
   let(:url) { described_class.new(request, settings) }
 
   before { url.correct! }
 
-  context 'regular pattern' do
-    let(:scheme) { 'https' }
-    let(:host) { 'www.caresq.jp' }
-    it { expect(url.corrected?).to be false }
-  end
+  (OK.keys.size + 1).times.each do |i|
+    OK.keys.combination(i) do |attrs|
+      context "settings with #{attrs.join(',') || 'none'}" do
+        let(:settings) do
+          {}.tap do |settings|
+            attrs.each { |key| settings[key] = OK[key] }
+          end
+        end
 
-  context 'host' do
-    let(:scheme) { 'http' }
-    let(:host) { 'caresq.herokuapp.com' }
-    let(:expected_host) { 'www.caresql.com' }
-    let(:settings) { MockSettings.new(nil, expected_host) }
+        context 'ok' do
+          it { expect(url.corrected?).to be false }
+        end
 
-    it { expect(url.corrected?).to be true }
-    it { expect(url.to_s).to eq "#{scheme}://#{expected_host}#{path}" }
-  end
+        if attrs.size.positive?
+          context 'ng' do
+            attrs.each do |key|
+              let(key) { NG[key] }
+            end
 
-  context 'scheme' do
-    let(:scheme) { 'http' }
-    let(:host) { 'www.caresq.jp' }
-    let(:expected_scheme) { 'https' }
-    let(:settings) { MockSettings.new(expected_scheme, nil) }
-
-    it { expect(url.corrected?).to be true }
-    it { expect(url.to_s).to eq "#{expected_scheme}://#{host}#{path}" }
-  end
-
-  context 'all' do
-    let(:scheme) { 'http' }
-    let(:host) { 'caresq.herokuapp.com' }
-    let(:expected_scheme) { 'https' }
-    let(:expected_host) { 'www.caresql.com' }
-    let(:settings) { MockSettings.new(expected_scheme, expected_host) }
-
-    it { expect(url.corrected?).to be true }
-    it { expect(url.to_s).to eq "#{expected_scheme}://#{expected_host}#{path}" }
+            it { expect(url.corrected?).to be true }
+            it { expect(url.to_s).to eq "#{OK[:scheme]}://#{OK[:host]}#{path}" }
+          end
+        end
+      end
+    end
   end
 end
