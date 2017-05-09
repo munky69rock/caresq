@@ -6,11 +6,12 @@ class ApplicationUrl
   delegate :to_s, to: :url
   delegate_missing_to :url
 
-  def initialize(request)
+  def initialize(request, settings = {})
     @url = URI.parse(request.original_url)
     CORRECTABLE_ATTRIBUTES.each do |key|
       instance_variable_set "@#{key}", request.send(key)
     end
+    @settings = settings
     @corrected = false
   end
 
@@ -26,12 +27,12 @@ class ApplicationUrl
 
   private
 
-  attr_reader :url
+  attr_reader :url, :settings
 
   def correct_attr!(key)
     value = instance_variable_get("@#{key}")
-    return if Settings.send(key).nil? || Settings.send(key) == value
-    @url.send("#{key}=", Settings.send(key))
+    return if settings[key].nil? || settings[key] == value
+    @url.send("#{key}=", settings[key])
     @corrected = true
   end
 end
