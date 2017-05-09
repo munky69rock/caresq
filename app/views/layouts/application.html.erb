@@ -18,73 +18,71 @@
   <body>
 
     <nav class="navbar navbar-toggleable-md navbar-light bg-faded fixed-top">
-      <%#
-       FIXME: navbar with container not working correctly now
-          div class="container"%>
-        <button class="navbar-toggler navbar-toggler-right" type="button"
-                data-toggle="collapse" data-target="#global-header" aria-controls="global-header" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <%= link_to 'ケアスク', root_path, class: 'navbar-brand wf-nicomoji ' %>
+      <button class="navbar-toggler navbar-toggler-right" type="button"
+              data-toggle="collapse" data-target="#global-header"
+              aria-controls="global-header" aria-expanded="false" aria-label="Toggle navigation">
 
-        <div class="collapse navbar-collapse" id="global-header">
-          <div class="mr-auto"></div>
-          <ul class="navbar-nav">
-            <% if user_signed_in? %>
-              <li class="nav-item">
-                <a href="<%= new_post_path %>" class="nav-link text-center hidden-md-down" style="width: 56px; height: 40px; padding: 0; position: relative;">
-                  <span class="fa fa-question-circle" style="position: absolute; left: 0; right: 0; margin: 0 auto; top: 0; font-size: 28px; line-height: 32px;"></span>
-                  <small style="position: absolute; top: 32px; left: 0; right: 0; margin: 0 auto; font-size: 8px; line-height: 8px;">質問する</small>
-                </a>
-                <%= link_to '質問する', new_post_path, class: 'nav-link hidden-lg-up'%>
-              </li>
-              <li class="nav-item">
-                <a href="<%= user_index_path %>" class="nav-link text-center hidden-md-down" style="width: 56px; height: 40px; padding: 0; position: relative;">
-                  <span class="fa fa-user" style="position: absolute; left: 0; right: 0; margin: 0 auto; top: 0; font-size: 28px; line-height: 32px;"></span>
-                  <small style="position: absolute; top: 32px; left: 0; right: 0; margin: 0 auto; font-size: 8px; line-height: 8px;">マイページ</small>
-                </a>
-                <%= link_to 'マイページ', user_index_path, class: 'nav-link hidden-lg-up'%>
-              </li>
-              <li class="nav-item">
-                <a href="<%= information_index_path %>" class="nav-link text-center hidden-md-down" style="width: 56px; height: 40px; padding: 0; position: relative;">
-                  <span class="fa fa-bell" style="position: absolute; left: 0; right: 0; margin: 0 auto; top: 0; font-size: 28px; line-height: 32px;"></span>
-                  <small style="position: absolute; top: 32px; left: 0; right: 0; margin: 0 auto; font-size: 8px; line-height: 8px;">お知らせ</small>
-                </a>
-                <%= link_to 'お知らせ', information_index_path, class: 'nav-link hidden-lg-up' %>
-              </li>
-              <li class="nav-item">
-                <a href="<%= destroy_user_session_path %>" data-method="delete" class="nav-link text-center hidden-md-down" style="width: 56px; height: 40px; padding: 0; position: relative;">
-                  <span class="fa fa-sign-out" style="position: absolute; left: 0; right: 0; margin: 0 auto; top: 0; font-size: 28px; line-height: 32px;"></span>
-                  <small style="position: absolute; top: 32px; left: 0; right: 0; margin: 0 auto; font-size: 8px; line-height: 8px;">ログアウト</small>
-                </a>
-                <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link hidden-lg-up' %>
-              </li>
-            <% else %>
-              <li class="nav-item">
-                <a href="<%= new_user_registration_path %>" class="nav-link text-center hidden-md-down" style="width: 56px; height: 40px; padding: 0; position: relative;">
-                  <span class="fa fa-user-plus" style="position: absolute; left: 0; right: 0; margin: 0 auto; top: 0; font-size: 28px; line-height: 32px;"></span>
-                  <small style="position: absolute; top: 32px; left: 0; right: 0; margin: 0 auto; font-size: 8px; line-height: 8px;">会員登録</small>
-                </a>
-                <%= link_to '会員登録', new_user_registration_path, class: 'nav-link hidden-lg-up' %>
-              </li>
-              <li class="nav-item">
-                <a href="<%= new_user_session_path %>" class="nav-link text-center hidden-md-down" style="width: 56px; height: 40px; padding: 0; position: relative;">
-                  <span class="fa fa-sign-in" style="position: absolute; left: 0; right: 0; margin: 0 auto; top: 0; font-size: 28px; line-height: 32px;"></span>
-                  <small style="position: absolute; top: 32px; left: 0; right: 0; margin: 0 auto; font-size: 8px; line-height: 8px;">ログイン</small>
-                </a>
-                <%= link_to 'ログイン', new_user_session_path, class: 'nav-link hidden-lg-up' %>
-              </li>
-              <li class="nav-item">
-                <a href="<%= information_index_path %>" class="nav-link text-center hidden-md-down" style="width: 56px; height: 40px; padding: 0; position: relative;">
-                  <span class="fa fa-bell" style="position: absolute; left: 0; right: 0; margin: 0 auto; top: 0; font-size: 28px; line-height: 32px;"></span>
-                  <small style="position: absolute; top: 32px; left: 0; right: 0; margin: 0 auto; font-size: 8px; line-height: 8px;">お知らせ</small>
-                </a>
-                <%= link_to 'お知らせ', information_index_path, class: 'nav-link hidden-lg-up' %>
-              </li>
-            <% end %>
-          </ul>
-        </div>
-      <%# /div%>
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <%= link_to 'ケアスク', root_path, class: 'navbar-brand wf-nicomoji ' %>
+
+      <div class="collapse navbar-collapse" id="global-header">
+        <div class="mr-auto"></div>
+        <ul class="navbar-nav">
+          <% if user_signed_in? %>
+            <li class="nav-item">
+              <a href="<%= new_post_path %>" class="nav-link text-center hidden-md-down" style="width: 56px; height: 40px; padding: 0; position: relative;">
+                <span class="fa fa-question-circle" style="position: absolute; left: 0; right: 0; margin: 0 auto; top: 0; font-size: 28px; line-height: 32px;"></span>
+                <small style="position: absolute; top: 32px; left: 0; right: 0; margin: 0 auto; font-size: 8px; line-height: 8px;">質問する</small>
+              </a>
+              <%= link_to '質問する', new_post_path, class: 'nav-link hidden-lg-up'%>
+            </li>
+            <li class="nav-item">
+              <a href="<%= user_index_path %>" class="nav-link text-center hidden-md-down" style="width: 56px; height: 40px; padding: 0; position: relative;">
+                <span class="fa fa-user" style="position: absolute; left: 0; right: 0; margin: 0 auto; top: 0; font-size: 28px; line-height: 32px;"></span>
+                <small style="position: absolute; top: 32px; left: 0; right: 0; margin: 0 auto; font-size: 8px; line-height: 8px;">マイページ</small>
+              </a>
+              <%= link_to 'マイページ', user_index_path, class: 'nav-link hidden-lg-up'%>
+            </li>
+            <li class="nav-item">
+              <a href="<%= information_index_path %>" class="nav-link text-center hidden-md-down" style="width: 56px; height: 40px; padding: 0; position: relative;">
+                <span class="fa fa-bell" style="position: absolute; left: 0; right: 0; margin: 0 auto; top: 0; font-size: 28px; line-height: 32px;"></span>
+                <small style="position: absolute; top: 32px; left: 0; right: 0; margin: 0 auto; font-size: 8px; line-height: 8px;">お知らせ</small>
+              </a>
+              <%= link_to 'お知らせ', information_index_path, class: 'nav-link hidden-lg-up' %>
+            </li>
+            <li class="nav-item">
+              <a href="<%= destroy_user_session_path %>" data-method="delete" class="nav-link text-center hidden-md-down" style="width: 56px; height: 40px; padding: 0; position: relative;">
+                <span class="fa fa-sign-out" style="position: absolute; left: 0; right: 0; margin: 0 auto; top: 0; font-size: 28px; line-height: 32px;"></span>
+                <small style="position: absolute; top: 32px; left: 0; right: 0; margin: 0 auto; font-size: 8px; line-height: 8px;">ログアウト</small>
+              </a>
+              <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link hidden-lg-up' %>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <a href="<%= new_user_registration_path %>" class="nav-link text-center hidden-md-down" style="width: 56px; height: 40px; padding: 0; position: relative;">
+                <span class="fa fa-user-plus" style="position: absolute; left: 0; right: 0; margin: 0 auto; top: 0; font-size: 28px; line-height: 32px;"></span>
+                <small style="position: absolute; top: 32px; left: 0; right: 0; margin: 0 auto; font-size: 8px; line-height: 8px;">会員登録</small>
+              </a>
+              <%= link_to '会員登録', new_user_registration_path, class: 'nav-link hidden-lg-up' %>
+            </li>
+            <li class="nav-item">
+              <a href="<%= new_user_session_path %>" class="nav-link text-center hidden-md-down" style="width: 56px; height: 40px; padding: 0; position: relative;">
+                <span class="fa fa-sign-in" style="position: absolute; left: 0; right: 0; margin: 0 auto; top: 0; font-size: 28px; line-height: 32px;"></span>
+                <small style="position: absolute; top: 32px; left: 0; right: 0; margin: 0 auto; font-size: 8px; line-height: 8px;">ログイン</small>
+              </a>
+              <%= link_to 'ログイン', new_user_session_path, class: 'nav-link hidden-lg-up' %>
+            </li>
+            <li class="nav-item">
+              <a href="<%= information_index_path %>" class="nav-link text-center hidden-md-down" style="width: 56px; height: 40px; padding: 0; position: relative;">
+                <span class="fa fa-bell" style="position: absolute; left: 0; right: 0; margin: 0 auto; top: 0; font-size: 28px; line-height: 32px;"></span>
+                <small style="position: absolute; top: 32px; left: 0; right: 0; margin: 0 auto; font-size: 8px; line-height: 8px;">お知らせ</small>
+              </a>
+              <%= link_to 'お知らせ', information_index_path, class: 'nav-link hidden-lg-up' %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
     </nav>
 
     <%= yield %>
