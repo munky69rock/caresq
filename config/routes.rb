@@ -45,4 +45,7 @@ Rails.application.routes.draw do
   end
 
   resources :information, only: %i[index show]
+
+  resources :admin, only: [:index] do
+  end
 end
