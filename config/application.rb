@@ -20,5 +20,7 @@ module Caresq
     config.i18n.fallbacks = [:en]
 
     config.time_zone = 'Asia/Tokyo'
+
+    config.active_record.schema_format = :sql
   end
 end

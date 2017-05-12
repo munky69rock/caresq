@@ -81,6 +81,5 @@ test:
 production:
   <<: *default
   url: <%= ENV['DATABASE_URL'] %>
-  #database: caresq_production
-  #username: caresq
-  #password: <%= ENV['CARESQ_DATABASE_PASSWORD'] %>
+  variables:
+     statement_timeout: 5000

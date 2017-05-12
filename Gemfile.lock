@@ -45,6 +45,8 @@ GEM
       activemodel (= 5.1.0)
       activesupport (= 5.1.0)
       arel (~> 8.0)
+    activerecord-clean-db-structure (0.2.0)
+      activerecord (>= 4.2)
     activesupport (5.1.0)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (~> 0.7)
@@ -117,6 +119,9 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.5)
       mime-types (>= 1.16, < 4)
+    marginalia (1.4.0)
+      actionpack (>= 2.3)
+      activerecord (>= 2.3)
     materialize-sass (0.98.2)
       sass (~> 3.3)
     method_source (0.8.2)
@@ -258,6 +263,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord-clean-db-structure
   bootstrap (~> 4.0.0.alpha6)
   bullet
   byebug
@@ -269,6 +275,7 @@ DEPENDENCIES
   kaminari
   letter_opener
   listen (>= 3.0.5, < 3.2)
+  marginalia
   materialize-sass
   newrelic_rpm
   pg (~> 0.18)

@@ -9,12 +9,14 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'activerecord-clean-db-structure'
 gem 'bootstrap', '~> 4.0.0.alpha6'
 gem 'config'
 gem 'devise', github: 'plataformatec/devise', branch: :master
 gem 'faker' # FIXME
 gem 'jbuilder', '~> 2.5'
 gem 'kaminari'
+gem 'marginalia'
 gem 'materialize-sass'
 gem 'newrelic_rpm'
 gem 'pg', '~> 0.18'
