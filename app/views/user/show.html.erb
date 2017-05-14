@@ -5,7 +5,10 @@
 
 <div class="profile-top text-center profile-top">
   <div class="profile-top__bg-top"></div>
-  <img class="profile-top__image mx-auto img-thumbnail rounded-circle" src="https://api.adorable.io/avatars/285/<%= @user.email %>.png" alt="<%= @user.name %>">
+  <%= image_tag user_image_url(@user),
+                class: 'profile-top__image mx-auto img-thumbnail rounded-circle',
+                alt: @user.name,
+                style: 'background-color: #eee; padding: 0;' %>
   <div class="profile-top__bg-bottom-wrapper container">
     <div class="row">
       <div class="offset-0 offset-sm-0 offset-md-1 offset-lg-2 offset-xl-2"></div>
@@ -108,7 +111,10 @@
           <div class="post-detail__content">
             <div class="row mb-2" style="height: 30px; line-height: 30px;">
               <div class="col-1">
-                <img class="mx-auto align-top rounded-circle" src="https://api.adorable.io/avatars/28/<%= comment.post.user.email %>.png" alt="<%= comment.post.user.name %>" style="height: 30px;"/>
+                <%= image_tag user_image_url(comment.post.user),
+                              class: 'mx-auto align-top img-thumbnail rounded-circle',
+                              alt: comment.post.user.name,
+                              style: 'max-width: initial; height: 30px; padding: 0; background-color: #eee;' %>
               </div>
               <div class="col-9">
                 <%= link_to comment.post.user.name, user_path(comment.post.user), class: 'font-weight-bold' %>さん

@@ -23,7 +23,10 @@
 
         <div class="row mb-2" style="height: 30px; line-height: 30px;">
           <div class="col-1">
-            <img class="mx-auto align-top rounded-circle" src="https://api.adorable.io/avatars/28/<%= @post.user.email %>.png" alt="<%= @post.user.name %>" style="height: 30px;"/>
+            <%= image_tag user_image_url(@post.user),
+                          class: 'mx-auto align-top img-thumbnail rounded-circle',
+                          alt: @post.user.name,
+                          style: 'max-width: initial; height: 30px; padding: 0; background-color: #eee;' %>
           </div>
           <div class="col-9">
             <%= link_to @post.user.name, user_path(@post.user), class: 'font-weight-bold' %>さん
@@ -107,7 +110,10 @@
 
           <div class="row mb-2" style="height: 30px; line-height: 30px;">
             <div class="col-1">
-              <img class="mx-auto align-top rounded-circle" src="https://api.adorable.io/avatars/28/<%= comment.user.email %>.png" alt="<%= comment.user.name %>" style="height: 30px;"/>
+              <%= image_tag user_image_url(comment.user),
+                            class: 'mx-auto align-top img-thumbnail rounded-circle',
+                            alt: comment.user.name,
+                            style: 'max-width: initial; height: 30px; padding: 0; background-color: #eee;' %>
             </div>
             <div class="col-9">
               <%= link_to comment.user.name, user_path(comment.user), class: 'font-weight-bold' %>さん

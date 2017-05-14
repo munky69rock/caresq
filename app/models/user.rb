@@ -21,4 +21,8 @@ class User < ApplicationRecord
     return nil if birth_date.nil?
     t.years_from(birth_date)
   end
+
+  def default_image_url
+    format('/assets/users/%03d.svg', id % 55)
+  end
 end
