@@ -23,6 +23,6 @@ class User < ApplicationRecord
   end
 
   def default_image_url
-    format('/assets/users/%03d.svg', id % 55)
+    format('users/%03d.svg', id % 55)
   end
 end
