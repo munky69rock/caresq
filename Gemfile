@@ -10,10 +10,13 @@ git_source(:github) do |repo_name|
 end
 
 gem 'activerecord-clean-db-structure'
+gem 'aws-sdk', '~> 2'
 gem 'bootstrap', '~> 4.0.0.alpha6'
+gem 'carrierwave', '~> 1.0'
 gem 'config'
 gem 'devise', github: 'plataformatec/devise', branch: :master
 gem 'faker' # FIXME
+gem 'fog-aws'
 gem 'jbuilder', '~> 2.5'
 gem 'kaminari'
 gem 'marginalia'

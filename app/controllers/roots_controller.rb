@@ -2,6 +2,6 @@
 
 class RootsController < ApplicationController
   def index
-    @posts = Post.includes(:user, :tags).page params[:page]
+    @posts = Post.includes(:user, :tags).order(id: :desc).page params[:page]
   end
 end

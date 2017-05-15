@@ -22,5 +22,7 @@ module Caresq
     config.time_zone = 'Asia/Tokyo'
 
     config.active_record.schema_format = :sql
+
+    config.paths.add File.join('app', 'uploaders'), eager_load: true
   end
 end

@@ -1,0 +1,17 @@
+<div class="container">
+  <%= form_for @user, url: avatar_path, html: { multipart: true } do |f| %>
+      <div>
+        <label>My Avatar</label>
+        <div>
+          <%= image_tag(@user.avatar_url, style: 'height: 100px;') if @user.avatar? %>
+        </div>
+        <div>
+          <%= f.file_field :avatar %>
+        </div>
+        <%= f.hidden_field :avatar_cache %>
+        <div>
+          <%= f.submit %>
+        </div>
+      </div>
+  <% end %>
+</div>

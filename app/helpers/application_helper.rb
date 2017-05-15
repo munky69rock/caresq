@@ -20,6 +20,6 @@ module ApplicationHelper
   end
 
   def user_image_url(user)
-    user.image_url || user.default_image_url
+    user.avatar.url
   end
 end

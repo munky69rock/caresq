@@ -41,6 +41,8 @@ Rails.application.routes.draw do
       get :edit
       put :update
       patch :update
+
+      resource :avatar, only: %i[show update], controller: 'users/avatar'
     end
   end
 

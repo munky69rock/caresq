@@ -1,0 +1,4 @@
+asset_host: https://caresq.aws.amazon.com
+aws:
+  bucket: caresq
+  region: ap-northeast-1

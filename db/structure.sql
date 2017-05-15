@@ -120,7 +120,6 @@ CREATE TABLE users (
     birth_date date,
     gender integer,
     description text,
-    image_url character varying,
     reset_password_token character varying,
     reset_password_sent_at timestamp without time zone,
     remember_created_at timestamp without time zone,
@@ -134,7 +133,8 @@ CREATE TABLE users (
     confirmation_sent_at timestamp without time zone,
     unconfirmed_email character varying,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    avatar character varying
 );
 
 ALTER TABLE ONLY ar_internal_metadata
@@ -218,5 +218,6 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170427015255'),
 ('20170427015322'),
 ('20170427121448'),
-('20170509053650');
+('20170509053650'),
+('20170515013322');
 
