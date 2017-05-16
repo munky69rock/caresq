@@ -26,7 +26,7 @@
 
       <h3 class="text-center pt-2"><%= @user.name %></h3>
       <% if @user.address.present? %>
-      <p><%= @user.address.prefecture %><%= @user.address.city %></p>
+      <p class="text-center"><%= @user.address.prefecture %><%= @user.address.city %></p>
       <% end %>
 
       <div class="row mt-2">
