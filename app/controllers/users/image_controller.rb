@@ -1,12 +1,12 @@
 module Users
-  class AvatarController < ApplicationController
+  class ImageController < ApplicationController
     def show
       @user = current_user
     end
 
     def update
       @user = current_user
-      @user.avatar = avatar_params[:avatar]
+      @user.image = image_params[:image]
       if @user.save
         redirect_to user_index_path
       else
@@ -16,8 +16,8 @@ module Users
 
     private
 
-    def avatar_params
-      params.require(:user).permit(:avatar)
+    def image_params
+      params.require(:user).permit(:image)
     end
   end
 end

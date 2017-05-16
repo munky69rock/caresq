@@ -42,7 +42,7 @@ Rails.application.routes.draw do
       put :update
       patch :update
 
-      resource :avatar, only: %i[show update], controller: 'users/avatar'
+      resource :image, only: %i[show update], controller: 'users/image'
     end
   end
 

@@ -1,4 +1,4 @@
-class AvatarUploader < ImageUploader
+class UserImageUploader < ImageUploader
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick

@@ -20,6 +20,6 @@ module ApplicationHelper
   end
 
   def user_image_url(user)
-    user.avatar.url
+    user.image.url
   end
 end
