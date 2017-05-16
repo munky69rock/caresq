@@ -8,7 +8,8 @@ class Post < ApplicationRecord
   has_many :post_tags
   has_many :tags, through: :post_tags
 
-  validates :title, presence: true
+  mount_uploader :image, PostImageUploader
+
   validates :body, presence: true
 
   def by?(user)

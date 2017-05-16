@@ -87,7 +87,7 @@ CREATE TABLE post_tags (
 CREATE TABLE posts (
     id BIGSERIAL PRIMARY KEY,
     user_id bigint NOT NULL,
-    title character varying NOT NULL,
+    image character varying,
     body text NOT NULL,
     deleted_at timestamp without time zone,
     comment_count integer DEFAULT 0 NOT NULL,

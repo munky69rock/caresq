@@ -40,6 +40,11 @@
           <div class="col-12">
             <%= simple_format @post.body %>
           </div>
+          <% if @post.image? %>
+          <div class="col-12">
+            <%= image_tag @post.image_url %>
+          </div>
+          <% end %>
         </div>
 
         <div class="row">
