@@ -23,7 +23,7 @@
 
         <div class="row mb-2" style="height: 30px; line-height: 30px;">
           <div class="col-1">
-            <%= image_tag user_image_url(@post.user),
+            <%= image_tag @post.user.image_url,
                           class: 'mx-auto align-top img-thumbnail rounded-circle',
                           alt: @post.user.name,
                           style: 'max-width: initial; height: 30px; padding: 0; background-color: #eee;' %>
@@ -110,7 +110,7 @@
 
           <div class="row mb-2" style="height: 30px; line-height: 30px;">
             <div class="col-1">
-              <%= image_tag user_image_url(comment.user),
+              <%= image_tag comment.user.image_url,
                             class: 'mx-auto align-top img-thumbnail rounded-circle',
                             alt: comment.user.name,
                             style: 'max-width: initial; height: 30px; padding: 0; background-color: #eee;' %>

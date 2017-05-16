@@ -5,7 +5,7 @@
 
 <div class="profile-top text-center profile-top">
   <div class="profile-top__bg-top"></div>
-  <%= image_tag user_image_url(@user),
+  <%= image_tag @user.image_url,
                 class: 'profile-top__image mx-auto img-thumbnail rounded-circle',
                 alt: @user.name,
                 style: 'background-color: #eee; padding: 0;' %>
@@ -112,7 +112,7 @@
           <div class="post-detail__content">
             <div class="row mb-2" style="height: 30px; line-height: 30px;">
               <div class="col-1">
-                <%= image_tag user_image_url(comment.post.user),
+                <%= image_tag comment.post.user.image_url,
                               class: 'mx-auto align-top img-thumbnail rounded-circle',
                               alt: comment.post.user.name,
                               style: 'max-width: initial; height: 30px; padding: 0; background-color: #eee;' %>

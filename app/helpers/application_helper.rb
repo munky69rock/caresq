@@ -18,8 +18,4 @@ module ApplicationHelper
     options[:length] ||= 250
     truncate(text, options, &block)
   end
-
-  def user_image_url(user)
-    user.image.url
-  end
 end
