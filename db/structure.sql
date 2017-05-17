@@ -68,6 +68,8 @@ CREATE TABLE information (
     id BIGSERIAL PRIMARY KEY,
     title character varying NOT NULL,
     body text NOT NULL,
+    syntax integer DEFAULT 0 NOT NULL,
+    published_at timestamp without time zone DEFAULT now(),
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );

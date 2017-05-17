@@ -1,5 +1,5 @@
 <div class="container">
-  <%= title @information.title %>
+  <h1><%= @information.title %></h1>
   <hr/>
   <% if @information.text? %>
     <%= simple_format @information.body %>

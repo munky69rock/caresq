@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'assets_manager'
 
 if AssetsManager.aws_available?

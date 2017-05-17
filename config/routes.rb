@@ -48,6 +48,8 @@ Rails.application.routes.draw do
 
   resources :information, only: %i[index show]
 
-  resources :admin, only: [:index] do
+  resources :admin, only: [:index]
+  namespace :admin do
+    resources :information
   end
 end

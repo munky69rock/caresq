@@ -2,10 +2,10 @@
 
 class InformationController < ApplicationController
   def index
-    @information = Information.page(params[:page])
+    @information = Information.published.page(params[:page])
   end
 
   def show
-    @information = Information.find(params[:id])
+    @information = Information.published.find(params[:id])
   end
 end

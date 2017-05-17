@@ -18,4 +18,14 @@ module ApplicationHelper
     options[:length] ||= 250
     truncate(text, options, &block)
   end
+
+  def render_markdown(markdown)
+    markdown_renderer.render(markdown).html_safe # rubocop:disable Rails/OutputSafety
+  end
+
+  private
+
+  def markdown_renderer
+    @markdown_renderer ||= Redcarpet::Markdown.new(Redcarpet::Render::HTML)
+  end
 end

@@ -1,0 +1,12 @@
+<div class="container">
+  <div>
+    <% link_to '新規', new_admin_information_path %>
+  </div>
+  <% @information.each do |information| %>
+    <p>
+      <%= link_to information.title, admin_information_path(information) %>
+      /
+      <%= link_to '編集', edit_admin_information_path(information) %>
+    </p>
+  <% end %>
+</div>
