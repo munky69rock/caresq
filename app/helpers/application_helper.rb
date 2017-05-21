@@ -34,6 +34,11 @@ module ApplicationHelper
   private
 
   def markdown_renderer
-    @markdown_renderer ||= Redcarpet::Markdown.new(Redcarpet::Render::HTML)
+    @markdown_renderer ||= Redcarpet::Markdown.new(
+      Redcarpet::Render::HTML,
+      tables: true,
+      fenced_code_blocks: true,
+      strikethrough: true,
+    )
   end
 end
