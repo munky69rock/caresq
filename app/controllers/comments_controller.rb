@@ -28,9 +28,9 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    post_id = @comment.post.id
-    @comment.soft_destroy!
-    redirect_to post_path(post_id)
+    redirect_path = post_path(@comment.post.id)
+    CommentForm.new(@comment).destroy!
+    redirect_to redirect_path
   end
 
   private
