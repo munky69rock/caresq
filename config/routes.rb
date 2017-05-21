@@ -26,7 +26,7 @@ Rails.application.routes.draw do
 
   get '/:id', to: 'posts#show', as: :post, constraints: { id: /\d+/ }
   get '/posts/:id',
-      to: redirect('/%{id}', status: 301),
+      to: redirect('/%{id}', status: :moved_permanently),
       as: :modify_post,
       constraints: { id: /\d+/ }
   resources :posts, except: [:show]
@@ -34,7 +34,7 @@ Rails.application.routes.draw do
   resources :comments, only: %i[create edit update destroy]
 
   resources :users, only: [:show]
-  get :users, to: redirect('/user', status: 301)
+  get :users, to: redirect('/user', status: :moved_permanently)
   resources :user, only: [] do
     collection do
       get :/, action: :show
@@ -48,8 +48,13 @@ Rails.application.routes.draw do
 
   resources :information, only: %i[index show]
 
+  # Admin Page
   resources :admin, only: [:index]
   namespace :admin do
     resources :information
+    resources :static_page, except: [:show]
   end
+
+  # Static Page
+  match '*path', controller: :static_page, action: :show, via: :get
 end

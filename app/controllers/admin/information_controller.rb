@@ -36,7 +36,11 @@ module Admin
       end
     end
 
-    def destroy; end
+    def destroy
+      @information = Information.find(params[:id])
+      @information.destroy!
+      redirect_to admin_information_index_path
+    end
 
     private
 

@@ -103,6 +103,18 @@ CREATE TABLE schema_migrations (
     version character varying NOT NULL
 );
 
+-- Name: static_pages; Type: TABLE
+
+CREATE TABLE static_pages (
+    id BIGSERIAL PRIMARY KEY,
+    path character varying NOT NULL,
+    title character varying NOT NULL,
+    body text NOT NULL,
+    syntax integer DEFAULT 0 NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
 -- Name: tags; Type: TABLE
 
 CREATE TABLE tags (
@@ -177,6 +189,10 @@ CREATE INDEX index_post_tags_on_tag_id ON post_tags USING btree (tag_id);
 
 CREATE INDEX index_posts_on_user_id ON posts USING btree (user_id);
 
+-- Name: index_static_pages_on_path; Type: INDEX
+
+CREATE UNIQUE INDEX index_static_pages_on_path ON static_pages USING btree (path);
+
 -- Name: index_tags_on_value; Type: INDEX
 
 CREATE UNIQUE INDEX index_tags_on_value ON tags USING btree (value);
@@ -220,5 +236,6 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170427015255'),
 ('20170427015322'),
 ('20170427121448'),
-('20170509053650');
+('20170509053650'),
+('20170521095414');
 

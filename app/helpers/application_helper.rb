@@ -23,6 +23,14 @@ module ApplicationHelper
     markdown_renderer.render(markdown).html_safe # rubocop:disable Rails/OutputSafety
   end
 
+  def static_page_link_to(title, path, options = {})
+    if path.is_a?(Array)
+      link_to title, "/#{path.join('/')}", options
+    else
+      link_to title, "/#{path}", options
+    end
+  end
+
   private
 
   def markdown_renderer

@@ -1,0 +1,9 @@
+<div class="container">
+<% if @page.text? %>
+  <%= simple_format @page.body %>
+<% elsif @page.html? %>
+  <%= @page.body.html_safe %>
+<% elsif @page.markdown? %>
+  <%= render_markdown(@page.body) %>
+<% end %>
+</div>

@@ -15,7 +15,7 @@
             <div class="form-check form-check-inline">
               <%= f.label :"syntax_#{v}" do %>
                   <%= f.radio_button :syntax, v, checked: @information.send("#{k}?") %>
-                  <%= User.human_attribute_name("information.#{k}") %>
+                  <%= Information.human_attribute_name("information.#{k}") %>
               <% end %>
             </div>
         <% end %>

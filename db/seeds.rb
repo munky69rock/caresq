@@ -6,3 +6,25 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+StaticPage.create [
+  {
+    path: 'about',
+    title: '運営会社',
+    body: 'coming soon...'
+  },
+  {
+    path: 'privacy',
+    title: 'プライバシー',
+    body: 'coming soon...',
+  },
+  {
+    path: 'terms',
+    title: '規約',
+    body: 'coming soon...',
+  },
+  {
+    path: 'faq',
+    title: 'FQA',
+    body: 'coming soon...',
+  }
+]

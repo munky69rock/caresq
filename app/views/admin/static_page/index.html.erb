@@ -1,0 +1,32 @@
+<%= content_for :title, '静的ページ一覧' %>
+
+<div>
+  <%= link_to '新規作成', new_admin_static_page_path, class: 'btn btn-primary' %>
+</div>
+
+<table class="table table-bordered mt-4">
+  <thead>
+  <tr>
+    <th>ページタイトル</th>
+    <th>URL</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @pages.each do |page| %>
+    <tr>
+      <td>
+        <%= link_to page.title, "/#{page.path}", target: '_blank' %>
+      </td>
+      <td>
+        <%= "/#{page.path}" %>
+      </td>
+      <td>
+        <%= link_to '編集', edit_admin_static_page_path(page) %>
+        /
+        <%= delete_link_to '削除', admin_static_page_path(page) %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

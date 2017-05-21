@@ -1,3 +1,5 @@
+<%= content_for :title, 'お知らせ一覧' %>
+
 <div>
   <%= link_to '新規作成', new_admin_information_path, class: 'btn btn-primary' %>
 </div>
@@ -17,6 +19,8 @@
       </td>
       <td>
         <%= link_to '編集', edit_admin_information_path(information) %>
+        /
+        <%= delete_link_to '削除', admin_information_path(information) %>
       </td>
     </tr>
   <% end %>
