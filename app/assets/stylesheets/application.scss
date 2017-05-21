@@ -25,7 +25,7 @@ $cs-primary-color: #ffd328;
 $cs-primary-color-dark: #ddb103;
 
 @mixin cs-box-shadow {
-  box-shadow: 0 4px 4px #ccc;
+  box-shadow: 0 .25rem .25rem #ccc;
 }
 
 @import "bootstrap";
@@ -38,19 +38,49 @@ html {
 body {
   padding-top: 5rem;
   margin-bottom: 5rem;
-  font-family: "Noto Sans Japanese",-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-family: "Noto Sans Japanese", -apple-system, system-ui, BlinkMacSystemFont,
+               "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   background-color: #eee;
   min-height: 100%;
 }
 
-.logo {
-  font-family: "Mplus 1p", sans-serif;
-  font-weight: bold;
+.header {
+  .logo {
+    font-family: "Mplus 1p", sans-serif;
+    font-weight: bold;
+  }
+
+  .user-icon {
+    padding: 0;
+    width: 1.8rem;
+    top: .4rem;
+    left: .5rem;
+    position: absolute;
+  }
+
+  .info {
+    width: 2.375rem;
+    height: 2.375rem;
+    padding: 0;
+    position: relative;
+    @extend .text-center;
+
+    &-icon {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: .1rem;
+      margin: 0 auto;
+      font-size: 1.25rem;
+      line-height: 2.375rem;
+    }
+  }
 }
+
 
 .navbar {
   background-color: $cs-primary-color;
-  box-shadow: 0 2px 2px $cs-primary-color-dark;
+  box-shadow: 0 .125rem .125rem $cs-primary-color-dark;
 }
 
 .footer {
@@ -58,7 +88,7 @@ body {
   bottom: 0;
   width: 100%;
   background-color: $cs-primary-color;
-  box-shadow: 0 -2px 2px $cs-primary-color-dark inset;
+  box-shadow: 0 -.125rem .125rem $cs-primary-color-dark inset;
 
   a {
     font-size: .8rem;
@@ -83,10 +113,10 @@ body {
 
 .post-list {
   &__item {
-    padding: 16px;
+    padding: 1rem;
     background-color: #fff;
     @include cs-box-shadow();
-    margin-bottom: 16px;
+    margin-bottom: 1rem;
 
     &-wrapper {
       @include media-breakpoint-down(xs) {
@@ -98,7 +128,7 @@ body {
 
 .post-detail {
   &__content {
-    padding: 32px;
+    padding: 2rem;
     background-color: #fff;
     @include cs-box-shadow();
 
@@ -112,7 +142,7 @@ body {
 
 .comment-list {
   &__item {
-    padding: 32px;
+    padding: 2rem;
     background-color: #fff;
     @include cs-box-shadow();
 

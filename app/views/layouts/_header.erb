@@ -1,0 +1,50 @@
+<nav class="header navbar navbar-toggleable-md navbar-light bg-faded fixed-top">
+  <button class="navbar-toggler navbar-toggler-right" type="button"
+          data-toggle="collapse" data-target="#global-header"
+          aria-controls="global-header" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <%= link_to 'ケアスク', root_path, class: 'navbar-brand logo' %>
+
+  <div class="collapse navbar-collapse" id="global-header">
+    <div class="mr-auto"></div>
+    <ul class="navbar-nav">
+      <% if user_signed_in? %>
+        <li class="nav-item">
+          <%= link_to '投稿する', new_post_path, class: 'nav-link'%>
+        </li>
+
+        <li class="nav-item dropdown hidden-md-down">
+          <a class="nav-link dropdown-toggle" href="<%= user_index_path %>" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <%= image_tag current_user.image_url, class: 'img-thumbnail rounded-circle user-icon' %>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+            <%= link_to 'マイページ', user_index_path, class: 'nav-link' %>
+            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link' %>
+          </div>
+        </li>
+        <li class="nav-item dropdown hidden-lg-up">
+          <%= link_to 'マイページ', user_index_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item dropdown hidden-lg-up">
+          <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link' %>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to '会員登録', new_user_registration_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'ログイン', new_user_session_path, class: 'nav-link' %>
+        </li>
+      <% end %>
+
+      <li class="nav-item">
+        <a href="<%= information_index_path %>" class="nav-link info hidden-md-down">
+          <span class="fa fa-bell-o info-icon"></span>
+        </a>
+        <%= link_to 'お知らせ', information_index_path, class: 'nav-link hidden-lg-up' %>
+      </li>
+    </ul>
+  </div>
+</nav>
