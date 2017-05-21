@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'markdowner'
+
 module ApplicationHelper
   def delete_link_to(name = nil, options = nil, html_options = {}, &block)
     html_options[:method] = :delete
@@ -20,7 +22,7 @@ module ApplicationHelper
   end
 
   def render_markdown(markdown)
-    markdown_renderer.render(markdown).html_safe # rubocop:disable Rails/OutputSafety
+    Markdowner.render(markdown).html_safe # rubocop:disable Rails/OutputSafety
   end
 
   def static_page_link_to(title, path, options = {})
@@ -29,16 +31,5 @@ module ApplicationHelper
     else
       link_to title, "/#{path}", options
     end
-  end
-
-  private
-
-  def markdown_renderer
-    @markdown_renderer ||= Redcarpet::Markdown.new(
-      Redcarpet::Render::HTML,
-      tables: true,
-      fenced_code_blocks: true,
-      strikethrough: true,
-    )
   end
 end
