@@ -17,9 +17,6 @@
 
 $brand-primary: #1334CB;
 
-//$border-radius:    .12rem;
-//$border-radius-lg: .14rem;
-//$border-radius-sm: .1rem;
 $navbar-toggler-border-radius: 0;
 $navbar-light-toggler-border: transparent;
 
@@ -46,8 +43,9 @@ body {
   min-height: 100%;
 }
 
-.wf-nicomoji {
-  font-family: "Nico Moji", sans-serif;
+.logo {
+  font-family: "Mplus 1p", sans-serif;
+  font-weight: bold;
 }
 
 .navbar {
