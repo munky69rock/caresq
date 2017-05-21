@@ -1,12 +1,24 @@
-<div class="container">
-  <div>
-    <% link_to '新規', new_admin_information_path %>
-  </div>
-  <% @information.each do |information| %>
-    <p>
-      <%= link_to information.title, admin_information_path(information) %>
-      /
-      <%= link_to '編集', edit_admin_information_path(information) %>
-    </p>
-  <% end %>
+<div>
+  <%= link_to '新規作成', new_admin_information_path, class: 'btn btn-primary' %>
 </div>
+
+<table class="table table-bordered mt-4">
+  <thead>
+    <tr>
+      <th>お知らせタイトル</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @information.each do |information| %>
+    <tr>
+      <td>
+        <%= link_to information.title, admin_information_path(information) %>
+      </td>
+      <td>
+        <%= link_to '編集', edit_admin_information_path(information) %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

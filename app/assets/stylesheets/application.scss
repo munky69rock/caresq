@@ -10,9 +10,6 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *  require_tree .
- *  require bootstrap
- *  require_self
  */
 
 $brand-primary: #1334CB;
@@ -78,7 +75,7 @@ body {
 }
 
 
-.navbar {
+.bg-caresq {
   background-color: $cs-primary-color;
   box-shadow: 0 .125rem .125rem $cs-primary-color-dark;
 }
