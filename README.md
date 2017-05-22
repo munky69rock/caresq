@@ -3,6 +3,7 @@
 ## Requirement
 
 - ruby 2.4.1
+- node.js
 - postgresql
 
 ## Setup
@@ -28,13 +29,20 @@
   ```
   $ gem install bundler
   $ bundle install
+  $ bundle exec rails db:setup
   $ bundle exec rails db:migrate
   $ bundle exec rails s
+  $ ./bin/webpack-dev-server
   ```
-  
- ## Development Utility
- 
- - generate dummy data
-   ```sh
-   $ rails dummy:generate
-   ```
+
+## Development Utility
+
+- insert default data
+  ```sh
+  $ rails db:seed
+  ```
+
+- generate dummy data
+  ```sh
+  $ rails dummy:generate
+  ```
