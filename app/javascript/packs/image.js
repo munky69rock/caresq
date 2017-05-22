@@ -1,5 +1,3 @@
-import Cropper from 'cropperjs';
-
 class ImageLoader {
   constructor(image) {
     this.image = image;
@@ -84,18 +82,24 @@ class ImageUploader {
     this.formData = new FormData();
   }
 
-  build(blob) {
-    this.formData.append('user[image]', blob);
-    ['utf8', '_method', 'authenticity_token'].forEach(name => {
-      this.addFormData(name);
-    });
+  get REQUIREMENTS() {
+    return ['utf8', '_method', 'authenticity_token'];
+  }
+
+  build(attr) {
+    Object.entries(attr).forEach(([key, value]) =>
+      this.formData.append(key, value)
+    );
+    this.REQUIREMENTS.forEach(name =>
+      this.addFormData(name)
+    );
     return this;
   }
 
   post() {
     return $.ajax({
       type: 'post',
-      url: '/user/image',
+      url: this.$form.action,
       data: this.formData,
       processData: false,
       contentType: false,
@@ -103,58 +107,9 @@ class ImageUploader {
   }
 
   addFormData(name) {
-    this.formData.append(name, document.querySelector(`input[name=${name}]`).value);
+    this.formData.append(name, this.$form.querySelector(`input[name=${name}]`).value);
   }
 }
 
-class Controller {
-  constructor() {
-    this.$image = document.querySelector('#user_image');
-    this.$canvas = document.querySelector('#canvas');
-    this.$canvas_wrapper = document.querySelector('#canvas-wrapper');
-    this.$form = document.querySelector('.edit_user');
-    this.$submit = document.querySelector('#submit');
+export { ImageLoader, ImageDrawer, ImageUploader };
 
-    this.cropper = null;
-  }
-
-  run() {
-    this.$image.addEventListener('change', () => {
-      this.$canvas_wrapper.style.display = 'block';
-      this.$submit.disabled = false;
-
-      const loader = new ImageLoader(this.$image);
-      const drawer = new ImageDrawer(this.$canvas);
-      loader.load(image => {
-        drawer.draw(image);
-        this.cropper = new Cropper(drawer.canvas, {
-          aspectRatio: 1,
-          zoomable: false
-        });
-      });
-    });
-
-    this.$form.addEventListener('submit', (e) => {
-      this.$submit.disabled = false;
-      e.preventDefault();
-      e.stopPropagation();
-
-      if (!this.cropper) {
-        return;
-      }
-
-      this.cropper.getCroppedCanvas().toBlob(blob => {
-        let uploader = new ImageUploader(this.$form);
-        uploader.build(blob).post().done(data => {
-          location.href = '/user';
-        }).fail(data => {
-          console.dir(data);
-          this.$submit.disabled = true;
-        });
-      });
-    });
-  }
-}
-
-const controller = new Controller();
-controller.run();
