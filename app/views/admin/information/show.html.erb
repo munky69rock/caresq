@@ -1,11 +1,17 @@
+<%= content_for :title, @information.title %>
+
 <div class="container">
-  <h1><%= @information.title %></h1>
-  <hr/>
-  <% if @information.text? %>
-    <%= simple_format @information.body %>
-  <% elsif @information.html? %>
-    <%= @information.body.html_safe %>
-  <% elsif @information.markdown? %>
-    <%= render_markdown(@information.body) %>
-  <% end %>
+  <div class="row">
+    <div class="bg-white p-5 <%= flex_spacing %>">
+      <h1><%= @information.title %></h1>
+      <hr/>
+      <% if @information.text? %>
+        <%= simple_format @information.body %>
+      <% elsif @information.html? %>
+        <%= @information.body.html_safe %>
+      <% elsif @information.markdown? %>
+        <%= render_markdown(@information.body) %>
+      <% end %>
+    </div>
+  </div>
 </div>

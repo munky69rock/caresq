@@ -11,8 +11,7 @@
                 style: 'background-color: #eee; padding: 0;' %>
   <div class="profile-top__bg-bottom-wrapper container">
     <div class="row">
-      <div class="offset-0 offset-sm-0 offset-md-1 offset-lg-2 offset-xl-2"></div>
-      <div class="profile-top__bg-bottom col-12 col-sm-12 col-md-10 col-lg-8 col-xl-8">
+      <div class="profile-top__bg-bottom <%= flex_spacing %>">
         <div class="row">
           <div class="offset-6 col-6 text-right">
             <%= link_to 'プロフィール編集', edit_user_index_path, class: 'btn btn-secondary mt-2' %><br/>
@@ -20,15 +19,13 @@
           </div>
         </div>
       </div>
-      <div class="offset-0 offset-sm-0 offset-md-1 offset-lg-2 offset-xl-2"></div>
     </div>
   </div>
 </div>
 
 <div class="profile-main container">
   <div class="row">
-    <div class="offset-0 offset-sm-0 offset-md-1 offset-lg-2 offset-xl-2"></div>
-    <div class="profile-main__container col-12 col-sm-12 col-md-10 col-lg-8 col-xl-8">
+    <div class="profile-main__container <%= flex_spacing %>">
 
       <h3 class="text-center pt-2"><%= @user.name %></h3>
       <% if @user.address.present? %>
@@ -56,15 +53,13 @@
       </div>
       <% end %>
     </div>
-    <div class="offset-0 offset-sm-0 offset-md-1 offset-lg-2 offset-xl-2"></div>
   </div>
 </div>
 
 <% if @user.posts.present? %>
 <div class="post-detail container">
   <div class="row">
-    <div class="offset-0 offset-sm-0 offset-md-1 offset-lg-2 offset-xl-2"></div>
-    <div class="post-detail__content-wrapper col-12 col-sm-12 col-md-10 col-lg-8 col-xl-8 p-0">
+    <div class="post-detail__content-wrapper <%= flex_spacing %> p-0">
       <h4 class="mt-3 mb-3">自分の質問</h4>
       <% @user.posts.each do |post| %>
           <div class="post-detail__content">
@@ -101,7 +96,6 @@
           </a>
       <% end %>
     </div>
-    <div class="offset-0 offset-sm-0 offset-md-1 offset-lg-2 offset-xl-2"></div>
   </div>
 </div>
 <% end %>
@@ -109,8 +103,7 @@
 <% if @user.comments.present? %>
 <div class="post-detail container">
   <div class="row">
-    <div class="offset-0 offset-sm-0 offset-md-1 offset-lg-2 offset-xl-2"></div>
-    <div class="post-detail__content-wrapper col-12 col-sm-12 col-md-10 col-lg-8 col-xl-8 p-0">
+    <div class="post-detail__content-wrapper <%= flex_spacing %> p-0">
       <h4 class="mt-3 mb-3">自分が回答した質問</h4>
       <% @user.comments.each do |comment| %>
           <div class="post-detail__content">
@@ -141,7 +134,6 @@
           </a>
       <% end %>
     </div>
-    <div class="offset-0 offset-sm-0 offset-md-1 offset-lg-2 offset-xl-2"></div>
   </div>
 </div>
 <% end %>

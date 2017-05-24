@@ -32,4 +32,8 @@ module ApplicationHelper
       link_to title, "/#{path}", options
     end
   end
+
+  def flex_spacing
+    'offset-0 offset-sm-0 offset-md-1 offset-lg-2 offset-xl-2 col-12 col-sm-12 col-md-10 col-lg-8 col-xl-8'
+  end
 end

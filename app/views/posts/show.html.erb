@@ -17,8 +17,7 @@
 <div class="post-detail container">
 
   <div class="row">
-    <div class="offset-0 offset-sm-0 offset-md-1 offset-lg-2 offset-xl-2"></div>
-    <div class="post-detail__content-wrapper col-12 col-sm-12 col-md-10 col-lg-8 col-xl-8">
+    <div class="post-detail__content-wrapper <%= flex_spacing %>">
       <div class="post-detail__content">
 
         <div class="row mb-2" style="height: 30px; line-height: 30px;">
@@ -96,21 +95,17 @@
         <% end %>
       </div>
     </div>
-    <div class="offset-0 offset-sm-0 offset-md-1 offset-lg-2 offset-xl-2"></div>
   </div>
 
   <div class="row mt-4">
-    <div class="offset-0 offset-sm-0 offset-md-1 offset-lg-2 offset-xl-2"></div>
-    <div class="comment-list__item-wrapper col-12 col-sm-12 col-md-10 col-lg-8 col-xl-8">
+    <div class="comment-list__item-wrapper <%= flex_spacing %>">
       <h5><%= @post.comment_count %>件のコメント</h5>
     </div>
-    <div class="offset-0 offset-sm-0 offset-md-1 offset-lg-2 offset-xl-2"></div>
   </div>
 
   <% @comments.each do |comment| %>
     <div class="row mt-3">
-      <div class="offset-0 offset-sm-0 offset-md-1 offset-lg-2 offset-xl-2"></div>
-      <div class="comment-list__item-wrapper col-12 col-sm-12 col-md-10 col-lg-8 col-xl-8">
+      <div class="comment-list__item-wrapper <%= flex_spacing %>">
         <div class="comment-list__item">
 
           <div class="row mb-2" style="height: 30px; line-height: 30px;">
@@ -168,19 +163,16 @@
 
         </div>
       </div>
-      <div class="offset-0 offset-sm-0 offset-md-1 offset-lg-2 offset-xl-2"></div>
     </div>
 
     <%= paginate @comments %>
   <% end %>
 
   <div class="row mt-4">
-    <div class="offset-0 offset-sm-0 offset-md-1 offset-lg-2 offset-xl-2"></div>
-    <div class="comment-list__item-wrapper col-12 col-sm-12 col-md-10 col-lg-8 col-xl-8">
+    <div class="comment-list__item-wrapper <%= flex_spacing %>">
       <i class="fa fa-chevron-left"></i>
       <%= link_to '質問一覧に戻る', root_path %>
     </div>
-    <div class="offset-0 offset-sm-0 offset-md-1 offset-lg-2 offset-xl-2"></div>
   </div>
 
 </div>

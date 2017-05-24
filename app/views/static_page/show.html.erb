@@ -1,9 +1,15 @@
+<%= content_for :title, @page.title %>
+
 <div class="container">
-<% if @page.text? %>
-  <%= simple_format @page.body %>
-<% elsif @page.html? %>
-  <%= @page.body.html_safe %>
-<% elsif @page.markdown? %>
-  <%= render_markdown(@page.body) %>
-<% end %>
+  <div class="row">
+    <div class="bg-white p-5 <%= flex_spacing %>">
+      <% if @page.text? %>
+        <%= simple_format @page.body %>
+      <% elsif @page.html? %>
+        <%= @page.body.html_safe %>
+      <% elsif @page.markdown? %>
+        <%= render_markdown(@page.body) %>
+      <% end %>
+    </div>
+  </div>
 </div>
