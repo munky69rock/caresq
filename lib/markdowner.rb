@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Markdowner
   class HTMLRender < Redcarpet::Render::HTML
     def table(header, body)
@@ -12,7 +14,7 @@ class Markdowner
 
   class << self
     def render(text)
-      renderer.render(text).html_safe
+      renderer.render(text).html_safe # rubocop:disable Rails/OutputSafety
     end
 
     def renderer
@@ -20,7 +22,7 @@ class Markdowner
         HTMLRender,
         tables: true,
         fenced_code_blocks: true,
-        strikethrough: true,
+        strikethrough: true
       )
     end
   end
