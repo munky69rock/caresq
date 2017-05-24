@@ -1,5 +1,5 @@
 import Cropper from 'cropperjs';
-import { ImageLoader, ImageUploader, ImageDrawer } from '../image';
+import { FileImageLoader, ImageUploader, CanvasImageDrawer } from '../image';
 
 class UserImageController {
   constructor() {
@@ -17,8 +17,8 @@ class UserImageController {
       this.$canvas_wrapper.style.display = 'block';
       this.$submit.disabled = false;
 
-      const loader = new ImageLoader(this.$image);
-      const drawer = new ImageDrawer(this.$canvas);
+      const loader = new FileImageLoader(this.$image);
+      const drawer = new CanvasImageDrawer(this.$canvas);
       loader.load(image => {
         drawer.draw(image);
         this.cropper = new Cropper(drawer.canvas, {

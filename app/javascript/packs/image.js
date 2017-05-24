@@ -1,28 +1,40 @@
 class ImageLoader {
+  constructor(src) {
+    this.image = new Image();
+    this.src = src;
+  }
+
+  load(didLoad = () => {}) {
+    this.image.addEventListener('load', () => {
+      didLoad(this.image);
+    });
+    this.image.src = this.src;
+  }
+}
+
+class FileImageLoader {
   constructor(image) {
     this.image = image;
     this.reader = new FileReader();
-
-    this.reader.addEventListener('load', (e) => {
-      let image = new Image();
-      image.src = e.target.result;
-      image.addEventListener('load', () => {
-        this.didLoad(image);
-      });
-    })
   }
 
-  load(didLoad) {
-    const blob = this.extractBlob();
+  load(didLoad = () => {}) {
+    const blob = this._extractBlob();
     if (!blob) {
       console.log('no blob');
       return;
     }
-    this.didLoad = didLoad;
+
+    this.reader.addEventListener('load', (e) => {
+      let loader = new ImageLoader(e.target.result);
+      loader.load((image) => {
+        didLoad(image);
+      });
+    });
     this.reader.readAsDataURL(blob);
   }
 
-  extractBlob() {
+  _extractBlob() {
     const files = this.image.files;
     if (files.length === 0) {
       console.log('no files');
@@ -36,11 +48,9 @@ class ImageLoader {
     }
     return file;
   }
-
-  didLoad(image) {}
 }
 
-class ImageDrawer {
+class CanvasImageDrawer {
   constructor(canvas) {
     this.canvas = canvas;
     this.ctx = canvas.getContext('2d');
@@ -91,7 +101,7 @@ class ImageUploader {
       this.formData.append(key, value)
     );
     this.REQUIREMENTS.forEach(name =>
-      this.addFormData(name)
+      this._addFormData(name)
     );
     return this;
   }
@@ -106,10 +116,9 @@ class ImageUploader {
     });
   }
 
-  addFormData(name) {
-    this.formData.append(name, this.$form.querySelector(`input[name=${name}]`).value);
+  _addFormData(name) {
+    this.formData.append(name, this.$form.querySelector(`input[name="${name}"]`).value);
   }
 }
 
-export { ImageLoader, ImageDrawer, ImageUploader };
-
+export { ImageLoader, FileImageLoader, CanvasImageDrawer, ImageUploader };

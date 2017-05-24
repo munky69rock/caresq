@@ -1,0 +1,36 @@
+<div class="container">
+  <% if @error %>
+    <%= @error %>
+  <% end %>
+  <%= form_for @page, url: admin_static_page_path(@page) do |f| %>
+
+    <div class="form-group">
+      <%= f.label :path %><br/>
+      <%= f.text_field :path, class: 'form-control', placeholder: '例) path/to/page' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :title %><br/>
+      <%= f.text_field :title, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :syntax %><br/>
+      <% StaticPage.syntaxes.each do |k, v| %>
+        <div class="form-check form-check-inline">
+          <%= f.label :"syntax_#{v}" do %>
+            <%= f.radio_button :syntax, v, checked: @page.send("#{k}?") %>
+            <%= StaticPage.human_attribute_name("static_page.#{k}") %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :body %><br/>
+      <%= f.text_area :body, class: 'form-control', rows: 30 %>
+    </div>
+
+    <%= f.submit '更新する', class: 'btn btn-primary' %>
+  <% end %>
+</div>
