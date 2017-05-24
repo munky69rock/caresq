@@ -53,6 +53,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :information
     resources :static_page, except: [:show]
+    resource :dump, only: [:show]
   end
 
   # Static Page
