@@ -28,8 +28,8 @@ module Admin
     end
 
     def update
-      @information = Information.new(information_param)
-      if @information.save
+      @information = Information.find(params[:id])
+      if @information.update(information_param)
         redirect_to admin_information_path(@information)
       else
         render :edit
