@@ -7,25 +7,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-StaticPage.create [
-  {
-    path: 'about',
-    title: '運営会社',
-    body: 'coming soon...'
-  },
-  {
-    path: 'privacy',
-    title: 'プライバシー',
-    body: 'coming soon...'
-  },
-  {
-    path: 'terms',
-    title: '規約',
-    body: 'coming soon...'
-  },
-  {
-    path: 'faq',
-    title: 'FAQ',
-    body: 'coming soon...'
-  }
-]
+
+file = File.expand_path(File.join('..', 'seeds', 'dump.json'), __FILE__)
+data = JSON.parse(File.read(file))
+
+StaticPage.create! data['static_pages'] if data['static_pages'].present?
+Information.create! data['information'] if data['information'].present?
