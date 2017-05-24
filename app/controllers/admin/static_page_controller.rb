@@ -26,7 +26,7 @@ module Admin
     end
 
     def update
-      @page = find(params[:id])
+      @page = StaticPage.find(params[:id])
       if @page.update(static_page_params)
         redirect_to controller: '/static_page',
                     action: :show,

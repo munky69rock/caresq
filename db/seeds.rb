@@ -24,7 +24,7 @@ StaticPage.create [
   },
   {
     path: 'faq',
-    title: 'FQA',
+    title: 'FAQ',
     body: 'coming soon...',
   }
 ]
