@@ -6,6 +6,7 @@
     per_page:      number of items to fetch per page
     remote:        data-remote
 -%>
+<% unless current_page.last? %>
 <li class="<%= 'disabled' if current_page.last? %> page-item next">
   <%= link_to (current_page.last? ? '#' : url), class: 'page-link', 'aria-label': 'Last', remote: remote do %>
     <span aria-hidden="true" class="fa fa-angle-double-right"></span>
@@ -14,3 +15,4 @@
     </span>
   <% end %>
 </li>
+<% end %>

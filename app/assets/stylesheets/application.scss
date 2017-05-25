@@ -16,16 +16,25 @@ $brand-primary: #1334CB;
 
 $navbar-toggler-border-radius: 0;
 $navbar-light-toggler-border: transparent;
+$placeholder-text-color: #ccc;
 
 $cs-primary-color-light: #ffe47a;
 $cs-primary-color: #ffd328;
 $cs-primary-color-dark: #ddb103;
 
+@import "bootstrap";
+
+// FIXME!
+::-webkit-input-placeholder {
+  color: #ccc!important;
+}
+:-moz-placeholder {
+  color: #ccc!important;
+}
+
 @mixin cs-box-shadow {
   box-shadow: 0 .25rem .25rem #ccc;
 }
-
-@import "bootstrap";
 
 html {
   position: relative;
@@ -35,8 +44,7 @@ html {
 body {
   padding-top: 5rem;
   margin-bottom: 5rem;
-  font-family: "Noto Sans Japanese", -apple-system, system-ui, BlinkMacSystemFont,
-               "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: "Noto Sans Japanese", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   background-color: #eee;
   min-height: 100%;
 }
@@ -83,6 +91,11 @@ body {
 .bg-white {
   background-color: #fff;
 }
+
+.text-silence {
+  color: #999;
+}
+
 
 .footer {
   position: absolute;
