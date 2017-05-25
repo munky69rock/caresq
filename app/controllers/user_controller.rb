@@ -5,7 +5,7 @@ class UserController < ApplicationController
   require_login only: %i[show edit update]
 
   def show
-    @user = User.includes(comments: [post: :user]).find(current_user.id)
+    @user = User.includes(posts: %i[tags], comments: [post: :user]).find(current_user.id)
   end
 
   def edit
