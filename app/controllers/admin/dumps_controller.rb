@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Admin
   class DumpsController < BaseController
     def show
