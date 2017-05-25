@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     end
   end
 
-  root 'roots#index'
+  root 'root#index'
 
   get '/:id', to: 'posts#show', as: :post, constraints: { id: /\d+/ }
   get '/posts/:id',

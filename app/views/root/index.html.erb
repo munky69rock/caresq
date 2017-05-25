@@ -1,9 +1,41 @@
 <%= content_for :title, 'ケアスク' %>
 
+<%= content_for :javascript do %>
+  <script>
+    $(".question-box-placeholder").on('click', function () {
+       $(this).hide();
+       $(".question-box").show();
+    });
+  </script>
+<% end %>
+
 <div class="container">
   <div class="row">
+
+    <div class="<%= flex_spacing %>">
+      <div class="question-box-placeholder bg-white text-silence py-2 px-3 mb-3" style="cursor: pointer;">
+        <i class="fa fa-pencil"></i>
+        <span>新しい質問を投稿する</span><br/>
+        <small>エトセトラエトセトラ</small>
+      </div>
+
+      <%= form_for(@post, html: { class: 'hidden question-box bg-white mb-3 p-3' }) do |f| %>
+
+        <div class="form-group">
+          <%= f.text_area :body, class: 'form-control', rows: 10, placeholder: "新しい質問を投稿する\nエトセトラエトセトラ" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.file_field :image, class: 'form-control' %>
+          <%= f.hidden_field :image_cache %>
+        </div>
+
+        <%= f.submit '投稿する', class: 'btn btn-primary btn-block', disabled: !current_user.confirmed? %>
+      <% end %>
+    </div>
+
     <% @posts.each do |post| %>
-      <div class="post-list__item-wrapper col-md-12 col-lg-6">
+      <div class="post-list__item-wrapper <%= flex_spacing %>">
         <div class="post-list__item">
 
           <div class="row mb-2" style="height: 30px; line-height: 30px;">
