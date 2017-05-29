@@ -9,13 +9,15 @@
   </script>
 <% end %>
 
-<%= content_for :css do %>
-  <%= stylesheet_link_tag 'root' %>
-<% end %>
+<% if (params[:page] || 1).to_i < 2 %>
+  <%= content_for :css do %>
+    <%= stylesheet_link_tag 'root' %>
+  <% end %>
 
-<div class="top-wrapper">
-  <div class="top-background"></div>
-</div>
+  <div class="top-wrapper">
+    <div class="top-background"></div>
+  </div>
+<% end %>
 
 <div class="container">
   <div class="row">
