@@ -11,9 +11,11 @@ module ApplicationHelper
     link_to(name, options, html_options, &block)
   end
 
-  def title(text, size = 2)
+  def title(text, options = {})
     content_for :title, text
-    simple_format text, {}, wrapper_tag: "h#{size}"
+    wrapper_tag = options[:tag] || "h#{options[:size] || 2}"
+    html_options = options[:class].present? ? { class: options[:class] } : {}
+    simple_format text, html_options, wrapper_tag: wrapper_tag
   end
 
   def truncate_l(text, options = {}, &block)
