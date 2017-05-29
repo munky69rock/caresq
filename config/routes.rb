@@ -57,5 +57,9 @@ Rails.application.routes.draw do
   end
 
   # Static Page
-  match '*path', controller: :static_page, action: :show, via: :get
+  ActiveSupport.on_load(:after_initialize) do
+    Rails.application.routes.append do
+      match '*path', controller: :static_page, action: :show, via: :get
+    end
+  end
 end
