@@ -2,7 +2,7 @@
 
 class RootController < ApplicationController
   def index
-    @post = Post.new
+    @post = Post.new if current_user.try(:confirmed?)
     @posts = Post.includes(:user, :tags).order(id: :desc).page params[:page]
   end
 end

@@ -12,6 +12,7 @@
 <div class="container">
   <div class="row">
 
+    <% if current_user.try(:confirmed?) %>
     <div class="<%= flex_spacing %>">
       <div class="question-box-placeholder bg-white text-silence py-2 px-3 mb-3" style="cursor: pointer;">
         <i class="fa fa-pencil"></i>
@@ -33,6 +34,7 @@
         <%= f.submit '投稿する', class: 'btn btn-primary btn-block', disabled: !current_user.confirmed? %>
       <% end %>
     </div>
+    <% end %>
 
     <% @posts.each do |post| %>
       <div class="post-list__item-wrapper <%= flex_spacing %>">
