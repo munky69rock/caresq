@@ -26,7 +26,7 @@ Rails.application.routes.draw do
 
   get '/:id', to: 'posts#show', as: :post, constraints: { id: /\d+/ }
   get '/posts/:id',
-      to: redirect('/%{id}', status: :moved_permanently),
+      to: redirect('/%{id}', status: 301),
       as: :modify_post,
       constraints: { id: /\d+/ }
   resources :posts, except: [:show]
@@ -34,7 +34,7 @@ Rails.application.routes.draw do
   resources :comments, only: %i[create edit update destroy]
 
   resources :users, only: [:show]
-  get :users, to: redirect('/user', status: :moved_permanently)
+  get :users, to: redirect('/user', status: 301)
   resources :user, only: [] do
     collection do
       get :/, action: :show
