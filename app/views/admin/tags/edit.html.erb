@@ -1,0 +1,15 @@
+<div class="container">
+  <% if @error %>
+      <%= @error %>
+  <% end %>
+  <%= form_for @tag, url: admin_tag_path(@tag) do |f| %>
+
+      <div class="form-group">
+        <%= f.label :value %><br/>
+        <%= f.text_field :value, class: 'form-control' %>
+      </div>
+
+      <%= f.submit '登録する', class: 'btn btn-primary' %>
+  <% end %>
+</div>
+

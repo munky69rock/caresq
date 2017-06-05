@@ -1,0 +1,29 @@
+<%= content_for :title, 'タグ一覧' %>
+
+<div>
+  <%= link_to '新規作成', new_admin_tag_path, class: 'btn btn-primary' %>
+</div>
+
+<table class="table table-bordered mt-4">
+  <thead>
+    <tr>
+      <th>タグ</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @tags.each do |tag| %>
+    <tr>
+      <td>
+        <%= tag.value %>
+      </td>
+      <td>
+        <%= link_to '編集', edit_admin_tag_path(tag) %>
+        /
+        <%= delete_link_to '削除', admin_tag_path(tag) %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<%= paginate @tags %>
