@@ -3,7 +3,7 @@
 module Admin
   class InformationController < BaseController
     def index
-      @information = Information.all
+      @information = Information.all.page params[:page]
     end
 
     def show

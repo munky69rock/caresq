@@ -3,7 +3,7 @@
 module Admin
   class StaticPageController < BaseController
     def index
-      @pages = StaticPage.all
+      @pages = StaticPage.all.page params[:page]
     end
 
     def new
