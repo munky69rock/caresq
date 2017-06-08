@@ -12,16 +12,7 @@
  *
  */
 
-$brand-primary: #1334CB;
-
-$navbar-toggler-border-radius: 0;
-$navbar-light-toggler-border: transparent;
-$placeholder-text-color: #ccc;
-
-$cs-primary-color-light: #ffe47a;
-$cs-primary-color: #ffd328;
-$cs-primary-color-dark: #ddb103;
-
+@import "settings";
 @import "bootstrap";
 
 // FIXME!
