@@ -1,9 +1,9 @@
 <%= content_for :javascript do %>
-  <%= javascript_pack_tag 'user_image/controller' %>
+  <%= javascript_pack_tag 'user_image', 'data-turbolinks-track': 'reload'  %>
 <% end %>
 
 <%= content_for :css do %>
-  <%= stylesheet_pack_tag 'user_image/style' %>
+  <%= stylesheet_pack_tag 'styles/user_image', 'data-turbolinks-track': 'reload'  %>
 <% end %>
 
 <div class="container">

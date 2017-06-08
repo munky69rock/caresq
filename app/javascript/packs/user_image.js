@@ -1,5 +1,5 @@
 import Cropper from 'cropperjs';
-import { FileImageLoader, ImageUploader, CanvasImageDrawer } from '../image';
+import { FileImageLoader, ImageUploader, CanvasImageDrawer } from 'image';
 
 class UserImageController {
   constructor() {

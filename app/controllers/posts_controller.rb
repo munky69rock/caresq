@@ -27,6 +27,7 @@ class PostsController < ApplicationController
     return render :new unless current_user.confirmed?
 
     @post = Post.new post_params
+    @post.tags = tags_params[:values].map(&Tag.method(:find)) if tags_params[:values].present?
     @post.user_id = current_user.id
     if @post.save
       redirect_to post_path(@post)
@@ -54,6 +55,12 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:body, :image)
+  end
+
+  def tags_params
+    params.require(:tags).permit(values: []).tap do |params|
+      params[:values].reject!(&:blank?) if params[:values].present?
+    end
   end
 
   def assert_posted_by_current_user

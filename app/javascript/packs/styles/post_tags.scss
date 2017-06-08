@@ -1,0 +1,5 @@
+@import "../../../assets/stylesheets/settings";
+$choices-button-icon-path: '../../../../node_modules/choices.js/assets/icons';
+$choices-primary-color: $cs-primary-color;
+$choices-border-radius-item: 3px;
+@import '../../../../node_modules/choices.js/assets/styles/scss/choices';
