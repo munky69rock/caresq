@@ -2,12 +2,12 @@
 
 set -e
 
-PG_DIR=tmp/postgres
-PG_LOG=log/postgres.log
+PG_DIR=${PG_DIR:-tmp/postgres}
+PG_LOG=${PG_LOG:-log/postgres.log}
 
 cmd="$1"
 
-if [ -z "$cmd" ]; then
+if [ -z $cmd ]; then
   echo "Usage: pg [init|start|stop]"
   exit
 fi
