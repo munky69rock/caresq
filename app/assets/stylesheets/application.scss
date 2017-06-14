@@ -44,6 +44,12 @@ body {
   .logo {
     font-family: "Mplus 1p", sans-serif;
     font-weight: bold;
+
+    .beta {
+      margin-left: .1rem;
+      font-style: italic;
+      font-size: 70%;
+    }
   }
 
   .user-icon {
