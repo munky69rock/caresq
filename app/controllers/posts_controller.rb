@@ -30,7 +30,7 @@ class PostsController < ApplicationController
     @post.tags = tags_params[:values].map(&Tag.method(:find)) if tags_params[:values].present?
     @post.user_id = current_user.id
     if @post.save
-      redirect_to post_path(@post)
+      redirect_to root_path
     else
       render :new
     end
