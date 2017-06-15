@@ -26,8 +26,6 @@ CREATE TABLE addresses (
     id BIGSERIAL PRIMARY KEY,
     user_id bigint NOT NULL,
     postal_code character varying NOT NULL,
-    prefecture character varying NOT NULL,
-    city character varying NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -237,5 +235,6 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170427015322'),
 ('20170427121448'),
 ('20170509053650'),
-('20170521095414');
+('20170521095414'),
+('20170615015848');
 

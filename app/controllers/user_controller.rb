@@ -33,7 +33,7 @@ class UserController < ApplicationController
       :description,
       :birth_date,
       :gender,
-      address: %i[postal_code prefecture city]
+      address: %i[postal_code]
     ).tap do |params|
       params[:gender] = params[:gender].to_i if params[:gender].present?
     end
