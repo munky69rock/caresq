@@ -123,7 +123,6 @@ body {
 
 .post-list {
   &__item {
-    padding: 1rem;
     background-color: #fff;
     @include cs-box-shadow();
     margin-bottom: 1rem;
@@ -133,6 +132,39 @@ body {
         padding: 0;
       }
     }
+  }
+
+  .post-header {
+    padding-top: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    line-height: 30px;
+  }
+
+  .post-link {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    display: block;
+    color: $body-color;
+    text-decoration: none;
+  }
+
+  .post-like, .post-comment {
+    text-align: center;
+    display: block;
+    color: $body-color;
+    text-decoration: none;
+    border-top: 1px solid #eeeeee;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+
+    i.like {
+      color: $yellow;
+    }
+  }
+
+  .post-like {
+    border-right: 1px solid #eeeeee;
   }
 }
 

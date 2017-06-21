@@ -12,7 +12,7 @@
   <% end %>
 <% end %>
 
-<% if (params[:page] || 1).to_i < 2 %>
+<% if (params[:page] || 1).to_i == 1 %>
   <%= content_for :css do %>
     <%= stylesheet_pack_tag 'styles/post_tags', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag 'root' %>
@@ -28,17 +28,15 @@
 <% end %>
 
 <div class="container">
-  <div class="row">
-
+  <div class="row post-list">
     <% if current_user.try(:confirmed?) %>
     <div class="<%= flex_spacing %>">
       <div class="question-box-placeholder bg-white text-silence py-2 px-3 mb-3" style="cursor: pointer;">
         <i class="fa fa-pencil"></i>
-        <span>新しい質問を投稿する</span><br/>
-        <small>エトセトラエトセトラ</small>
+        <span>新しい質問やノウハウを投稿する</span><br/>
+        <small>例)</small>
       </div>
-
-        <%= render partial: 'includes/post_form', locals: { post: @post, options: { html: { class: 'hidden question-box bg-white mb-3 p-3' } } } %>
+        <%= render partial: 'includes/post_form', locals: { post: @post, class: 'hidden question-box bg-white mb-3 p-3' }  %>
     </div>
     <% end %>
 
@@ -46,7 +44,7 @@
       <div class="post-list__item-wrapper <%= flex_spacing %>">
         <div class="post-list__item">
 
-          <div class="row mb-2" style="height: 30px; line-height: 30px;">
+          <div class="row post-header">
             <div class="col-1">
               <%= image_tag post.user.image_url,
                             class: 'mx-auto align-top img-thumbnail rounded-circle',
@@ -61,33 +59,41 @@
             </div>
           </div>
 
-          <div class="row">
-            <div class="col-12">
-              <p><%= truncate_l post.body %></p>
+          <%= link_to post_path(post), class: 'post-link py-3' do %>
+            <div class="row">
+              <div class="col-12">
+                <p><%= truncate_l post.body %></p>
+              </div>
             </div>
-          </div>
+
+            <div class="row">
+              <div class="col-2">
+                <% if post.comment_count.zero? %>
+                  <span class="badge badge-success">未回答</span>
+                <% end %>
+              </div>
+              <div class="col-10 text-right">
+                <% post.tags.each do |tag| %>
+                  <span class="badge badge-tag"><%= tag.value %></span>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
 
           <div class="row">
-            <div class="col-2">
-              <% if post.comment_count.zero? %>
-                <span class="badge badge-success">未回答</span>
+            <div class="col-6">
+              <a href="" class="align-middle post-like">
+                <i class="fa fa-star"></i>
+                <span>いいね</span>
+                <span class="badge badge-pill badge-default">0</span>
+              </a>
+            </div>
+            <div class="col-6">
+              <%= link_to post_url(post), class: 'align-middle post-comment' do %>
+                <i class="fa fa-comment-o"></i>
+                <span>コメント</span>
+                <span class="badge badge-pill badge-default"><%= post.comment_count %></span>
               <% end %>
-            </div>
-            <div class="col-10 text-right">
-              <% post.tags.each do |tag| %>
-                <span class="badge badge-tag"><%= tag.value %></span>
-              <% end %>
-            </div>
-          </div>
-
-          <div class="row mt-3">
-            <div class="col-10">
-              <%= link_to '回答する', post_path(post), class: 'btn btn-primary', style: 'width: 90%' %>
-            </div>
-            <div class="col-2">
-              <span class="align-middle">
-                <i class="fa fa-comment-o"></i>&nbsp;<%= post.comment_count %>
-              </span>
             </div>
           </div>
         </div>
