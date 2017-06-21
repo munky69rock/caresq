@@ -1,10 +1,9 @@
 <footer class="footer">
   <div class="container py-2">
     <ul class="nav justify-content-center">
-      <li class="nav-item"><%= static_page_link_to '運営会社', :about %></li>
       <li class="nav-item"><%= static_page_link_to 'プライバシー', :privacy %></li>
       <li class="nav-item"><%= static_page_link_to '規約', :terms %></li>
-      <li class="nav-item"><%= static_page_link_to 'FAQ', :faq %></li>
+      <li class="nav-item"><%= mail_to 'support@caresq.jp', 'お問い合わせ' %></li>
     </ul>
   </div>
 </footer>
