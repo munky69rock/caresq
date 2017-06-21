@@ -1,13 +1,15 @@
 <%= content_for :title, 'ケアスク' %>
 
-<%= content_for :javascript do %>
-  <%= javascript_pack_tag 'post_tags', 'data-turbolinks-track': 'reload' %>
-  <script>
-    $(".question-box-placeholder").on('click', function () {
-       $(this).hide();
-       $(".question-box").show();
-    });
-  </script>
+<% if current_user.try(:confirmed?) %>
+  <%= content_for :javascript do %>
+    <%= javascript_pack_tag 'post_tags', 'data-turbolinks-track': 'reload' %>
+    <script>
+      $(".question-box-placeholder").on('click', function () {
+         $(this).hide();
+         $(".question-box").show();
+      });
+    </script>
+  <% end %>
 <% end %>
 
 <% if (params[:page] || 1).to_i < 2 %>
