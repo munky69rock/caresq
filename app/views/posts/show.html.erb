@@ -10,6 +10,18 @@
         $(".comment-form-" + id).toggleClass("hidden");
         $(".comment-control-" + id).toggleClass("hidden");
       });
+
+      var $body = $(".post-detail__content-body");
+      var heightRem = 32;
+      if ($body.height() >= heightRem * 16) {
+        $body.css({ height: heightRem + 'rem' });
+        $(".post-detail__readmore").on('click', function() {
+          $body.css({ height: 'auto' });
+          $(this).hide();
+        }).show();
+      } else {
+        $body.css({ height: 'auto' });
+      }
     })();
   </script>
 <% end %>
@@ -35,10 +47,11 @@
           </div>
         </div>
 
-        <div class="row">
-          <div class="col-12">
+        <div class="row post-detail__content-body-wrapper">
+          <div class="col-12 post-detail__content-body">
             <%= simple_format @post.body %>
           </div>
+          <div class="post-detail__readmore">もっと見る<i class="fa fa-caret-down pl-1"></i></div>
           <% if @post.image? %>
           <div class="col-12">
             <%= image_tag @post.image_url %>

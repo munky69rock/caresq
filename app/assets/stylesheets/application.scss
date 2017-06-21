@@ -15,7 +15,6 @@
 @import "settings";
 @import "bootstrap";
 
-// FIXME!
 ::-webkit-input-placeholder {
   color: #ccc !important;
 }
@@ -147,6 +146,40 @@ body {
       @include media-breakpoint-down(xs) {
         padding: 0;
       }
+    }
+
+    &-body {
+      overflow: hidden;
+
+      &-wrapper {
+        position: relative;
+      }
+    }
+  }
+
+  &__readmore {
+    display: none;
+    color: $link-color;
+    cursor: pointer;
+    width: 100%;
+    text-align: right;
+    height: 1rem;
+    line-height: 1rem;
+    padding-right: 1rem;
+    margin-bottom: .5rem;
+    font-size: .8rem;
+
+    &:before {
+      width: 100%;
+      position: absolute;
+      content: ' ';
+      display: block;
+      bottom: 1.5rem;
+      height: 3rem;
+      background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+      background: -o-linear-gradient(bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+      background: -moz-linear-gradient(bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
     }
   }
 }
