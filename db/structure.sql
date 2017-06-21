@@ -72,6 +72,16 @@ CREATE TABLE information (
     updated_at timestamp without time zone NOT NULL
 );
 
+-- Name: likes; Type: TABLE
+
+CREATE TABLE likes (
+    id BIGSERIAL PRIMARY KEY,
+    user_id bigint,
+    post_id bigint,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
 -- Name: post_tags; Type: TABLE
 
 CREATE TABLE post_tags (
@@ -92,7 +102,8 @@ CREATE TABLE posts (
     deleted_at timestamp without time zone,
     comment_count integer DEFAULT 0 NOT NULL,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    like_count integer DEFAULT 0 NOT NULL
 );
 
 -- Name: schema_migrations; Type: TABLE
@@ -171,6 +182,18 @@ CREATE INDEX index_comments_on_post_id ON comments USING btree (post_id);
 
 CREATE INDEX index_comments_on_user_id ON comments USING btree (user_id);
 
+-- Name: index_likes_on_post_id; Type: INDEX
+
+CREATE INDEX index_likes_on_post_id ON likes USING btree (post_id);
+
+-- Name: index_likes_on_user_id; Type: INDEX
+
+CREATE INDEX index_likes_on_user_id ON likes USING btree (user_id);
+
+-- Name: index_likes_on_user_id_and_post_id; Type: INDEX
+
+CREATE UNIQUE INDEX index_likes_on_user_id_and_post_id ON likes USING btree (user_id, post_id);
+
 -- Name: index_post_tags_on_post_id; Type: INDEX
 
 CREATE INDEX index_post_tags_on_post_id ON post_tags USING btree (post_id);
@@ -207,6 +230,16 @@ CREATE UNIQUE INDEX index_users_on_email ON users USING btree (email);
 
 CREATE UNIQUE INDEX index_users_on_reset_password_token ON users USING btree (reset_password_token);
 
+-- Name: likes fk_rails_1e09b5dabf; Type: FK CONSTRAINT
+
+ALTER TABLE ONLY likes
+    ADD CONSTRAINT fk_rails_1e09b5dabf FOREIGN KEY (user_id) REFERENCES users(id);
+
+-- Name: likes fk_rails_87a8aac469; Type: FK CONSTRAINT
+
+ALTER TABLE ONLY likes
+    ADD CONSTRAINT fk_rails_87a8aac469 FOREIGN KEY (post_id) REFERENCES posts(id);
+
 -- Name: admin_users fk_rails_c4f75db4e4; Type: FK CONSTRAINT
 
 ALTER TABLE ONLY admin_users
@@ -236,5 +269,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170427121448'),
 ('20170509053650'),
 ('20170521095414'),
-('20170615015848');
+('20170615015848'),
+('20170621161212'),
+('20170621170304');
 

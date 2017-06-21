@@ -29,7 +29,9 @@ Rails.application.routes.draw do
       to: redirect('/%{id}', status: 301),
       as: :modify_post,
       constraints: { id: /\d+/ }
-  resources :posts, except: [:show]
+  resources :posts, except: [:show] do
+    resources :likes, shallow: true, only: %i[create destroy]
+  end
 
   resources :comments, only: %i[create edit update destroy]
 

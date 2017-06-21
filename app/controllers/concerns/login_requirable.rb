@@ -17,7 +17,11 @@ module LoginRequirable
   def assert_logged_in
     return unless self.class.login_action_filter.match?(params[:action])
     return if user_signed_in?
-    session[:return_to] = request.fullpath if request.get?
-    redirect_to new_user_session_url
+    if request.xhr?
+      render json: { status: 'error', message: 'login needed' }
+    else
+      session[:return_to] = request.fullpath if request.get?
+      redirect_to new_user_session_url
+    end
   end
 end
