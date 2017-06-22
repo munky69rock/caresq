@@ -3,7 +3,7 @@
     <ul class="nav justify-content-center">
       <li class="nav-item"><%= static_page_link_to 'プライバシー', :privacy %></li>
       <li class="nav-item"><%= static_page_link_to '規約', :terms %></li>
-      <li class="nav-item"><%= mail_to 'support@caresq.jp', 'お問い合わせ' %></li>
+      <li class="nav-item"><%= mail_to Settings.contact_email, 'お問い合わせ' %></li>
     </ul>
   </div>
 </footer>
