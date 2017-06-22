@@ -78,7 +78,6 @@ body {
   }
 }
 
-
 .bg-caresq {
   background-color: $cs-primary-color;
   box-shadow: 0 .125rem .125rem $cs-primary-color-dark;
@@ -120,12 +119,12 @@ body {
   color: #444;
 }
 
-
 .post-list {
   &__item {
     background-color: #fff;
     @include cs-box-shadow();
     margin-bottom: 1rem;
+    overflow: hidden;
 
     &-wrapper {
       @include media-breakpoint-down(xs) {
