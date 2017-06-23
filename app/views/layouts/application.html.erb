@@ -29,6 +29,16 @@
   <body>
     <%= render partial: 'layouts/application/header' %>
 
+    <% if flash.present? %>
+      <div class="flash-wrapper">
+      <% flash.each do |type, msg| %>
+        <% type = 'info' if type == 'notice' %>
+        <% type = 'danger' if type == 'alert' %>
+        <div class="alert alert-<%= type %> flash fade show <%= flex_spacing %>" role="alert"><%= msg %></div>
+      <% end %>
+      </div>
+    <% end  %>
+
     <%= yield %>
 
     <%= render partial: 'layouts/application/footer' %>

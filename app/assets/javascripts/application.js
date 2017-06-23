@@ -16,3 +16,11 @@
 //= require tether
 //= require bootstrap
 //= require cable
+$(function () {
+  var $alerts = $(".alert.flash");
+  if ($alerts.length > 0) {
+    setTimeout(function () {
+      $alerts.alert('close');
+    }, 3000);
+  }
+});
