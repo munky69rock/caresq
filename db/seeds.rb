@@ -8,6 +8,16 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+User.new(email: 'admin@caresq.jp',
+         name: 'admin',
+         password: ENV.fetch('ADMIN_PASSWORD'),
+         password_confirmation: ENV.fetch('ADMIN_PASSWORD'),
+         notification: false).tap do |admin|
+  admin.skip_confirmation!
+  admin.save!
+  AdminUser.create! user: admin
+end
+
 file = File.expand_path(File.join('..', 'seeds', 'dump.json'), __FILE__)
 data = JSON.parse(File.read(file))
 
