@@ -1,16 +1,18 @@
 <div class="container">
-  <%= title 'パスワードを忘れた方' %>
+  <div class="<%= flex_spacing %>">
+    <%= title 'パスワードを忘れた方' %>
 
-  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-    <%= devise_error_messages! %>
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+      <%= devise_error_messages! %>
 
-    <div class="form-group">
-      <%= f.label :email %>
-      <%= f.email_field :email, autofocus: true, class: 'form-control' %>
-    </div>
+      <div class="form-group">
+        <%= f.label :email %>
+        <%= f.email_field :email, autofocus: true, class: 'form-control' %>
+      </div>
 
-    <%= f.submit 'パスワードリセット用の確認メールの送信', class: 'btn btn-primary' %>
-  <% end %>
+      <%= f.submit 'パスワードリセット用の確認メールの送信', class: 'btn btn-primary' %>
+    <% end %>
 
-  <%= render 'users/shared/links' %>
+    <%= render 'users/shared/links' %>
+  </div>
 </div>

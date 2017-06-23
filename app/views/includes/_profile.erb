@@ -3,23 +3,23 @@
 <% end %>
 
 <div class="profile-top text-center profile-top">
-  <div class="profile-top__bg-top"></div>
+  <div class="profile-top__bg-top">
+    <% if edit_link %>
+      <div class="row pr-2">
+        <div class="offset-6 col-6 text-right">
+          <%= link_to 'プロフィール編集', edit_user_index_path, class: 'btn btn-secondary btn-sm mt-2' %><br/>
+          <%= link_to '画像編集', image_path, class: 'btn btn-secondary btn-sm mt-2' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
   <%= image_tag @user.image_url,
                 class: 'profile-top__image mx-auto img-thumbnail rounded-circle',
                 alt: @user.name,
                 style: 'background-color: #eee; padding: 0;' %>
   <div class="profile-top__bg-bottom-wrapper container">
     <div class="row">
-      <div class="profile-top__bg-bottom <%= flex_spacing %>">
-        <% if edit_link %>
-          <div class="row">
-            <div class="offset-6 col-6 text-right">
-              <%= link_to 'プロフィール編集', edit_user_index_path, class: 'btn btn-secondary mt-2' %><br/>
-              <%= link_to '画像編集', image_path, class: 'btn btn-secondary mt-2' %>
-            </div>
-          </div>
-        <% end %>
-      </div>
+      <div class="profile-top__bg-bottom <%= flex_spacing %>"></div>
     </div>
   </div>
 </div>
