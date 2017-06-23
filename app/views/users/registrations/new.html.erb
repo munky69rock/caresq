@@ -39,7 +39,7 @@
       <div class="form-check">
         <%= label_tag :agreement, class: 'form-check-label' do %>
           <%= check_box_tag :agreement, true, false, class: 'form-check-input' %>
-          <%= static_page_link_to '利用規約', :terms %>および<%= static_page_link_to 'プライバシーポリシー', :privacy %>に同意する
+          <%= static_page_link_to '利用規約', :terms, target: 'blank' %>および<%= static_page_link_to 'プライバシーポリシー', :privacy, target: 'blank' %>に同意する
         <% end %>
       </div>
 
