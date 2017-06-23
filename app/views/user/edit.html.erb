@@ -52,6 +52,13 @@
       </div>
     <% end %>
 
+    <div class="form-check">
+      <%= label_tag :user_notification, class: 'form-check-label' do %>
+        <%= f.check_box :notification, { class: 'form-check-input' } %>
+        ケアスクからのお知らせを受け取る
+      <% end %>
+    </div>
+
     <%= f.submit '登録する', class: 'btn btn-primary' %>
   <% end %>
 </div>

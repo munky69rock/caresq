@@ -157,7 +157,8 @@ CREATE TABLE users (
     confirmation_sent_at timestamp without time zone,
     unconfirmed_email character varying,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    notification boolean DEFAULT true
 );
 
 ALTER TABLE ONLY ar_internal_metadata
@@ -271,5 +272,6 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170521095414'),
 ('20170615015848'),
 ('20170621161212'),
-('20170621170304');
+('20170621170304'),
+('20170623092457');
 

@@ -45,7 +45,7 @@
 <% if (params[:page] || 1).to_i == 1 %>
   <%= content_for :css do %>
     <%= stylesheet_pack_tag 'styles/post_tags', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_link_tag 'root' %>
+    <%= stylesheet_link_tag 'root', 'data-turbolinks-track': 'reload' %>
   <% end %>
 
   <div class="top-wrapper">

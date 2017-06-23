@@ -37,6 +37,13 @@
       </div>
 
       <div class="form-check">
+        <%= label_tag :user_notification, class: 'form-check-label' do %>
+          <%= f.check_box :notification, { class: 'form-check-input' } %>
+          ケアスクからのお知らせを受け取る
+        <% end %>
+      </div>
+
+      <div class="form-check">
         <%= label_tag :agreement, class: 'form-check-label' do %>
           <%= check_box_tag :agreement, true, false, class: 'form-check-input' %>
           <%= static_page_link_to '利用規約', :terms, target: 'blank' %>および<%= static_page_link_to 'プライバシーポリシー', :privacy, target: 'blank' %>に同意する

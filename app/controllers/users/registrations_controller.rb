@@ -2,13 +2,14 @@
 
 module Users
   class RegistrationsController < Devise::RegistrationsController
-    # before_action :configure_sign_up_params, only: [:create]
+    before_action :configure_sign_up_params, only: [:create]
     # before_action :configure_account_update_params, only: [:update]
 
     # GET /resource/sign_up
-    # def new
-    #   super
-    # end
+    def new
+      super
+      resource.notification = true
+    end
 
     # POST /resource
     # def create
@@ -61,8 +62,13 @@ module Users
     #   super(resource)
     # end
 
+    def configure_sign_up_params
+      devise_parameter_sanitizer.permit(:sign_up, keys: [:notification])
+    end
+
     def sign_up_params
-      params.require(:user).permit(:email, :password, :password_confirmation, :name)
+      params.require(:user).permit(:email, :password, :password_confirmation,
+                                   :name, :agreement, :notification)
     end
   end
 end
