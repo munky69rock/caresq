@@ -257,3 +257,24 @@ body {
 .field_with_errors {
   @extend .has-danger;
 }
+
+#error_explanation {
+  color: $state-danger-text;
+  border: .1rem solid $state-danger-border;
+  background-color: $state-danger-bg;
+  padding: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border-radius: $border-radius;
+
+  h2 {
+    font-size: 1rem;
+  }
+  ul {
+    margin-bottom: 0;
+    li {
+      font-size: .9rem;
+      line-height: 1.1rem;
+    }
+  }
+}
