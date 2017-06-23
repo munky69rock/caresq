@@ -5,12 +5,12 @@
   <%= form_for @information, url: admin_information_index_path do |f| %>
 
       <div class="form-group">
-        <%= f.label :title %><br/>
+        <%= f.label :title %>
         <%= f.text_field :title, class: 'form-control' %>
       </div>
 
       <div class="form-group">
-        <%= f.label :syntax %><br/>
+        <%= f.label :syntax %>
         <% Information.syntaxes.each do |k, v| %>
             <div class="form-check form-check-inline">
               <%= f.label :"syntax_#{v}" do %>
@@ -22,12 +22,12 @@
       </div>
 
       <div class="form-group">
-        <%= f.label :body %><br/>
+        <%= f.label :body %>
         <%= f.text_area :body, class: 'form-control', rows: 30 %>
       </div>
 
       <div class="form-group">
-        <%= f.label :published_at %><br/>
+        <%= f.label :published_at %>
         <div class="form-inline">
           <%= f.datetime_select :published_at,
                                 {

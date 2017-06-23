@@ -3,12 +3,12 @@
 
   <%= form_for @post, url: modify_post_path, method: :patch do |f| %>
     <div class="form-group">
-      <%= f.label :title %><br/>
+      <%= f.label :title %>
       <%= f.text_field :title, autofocus: true, class: 'form-control' %>
     </div>
 
     <div class="form-group">
-      <%= f.label :body %><br/>
+      <%= f.label :body %>
       <%= f.text_area :body, class: 'form-control', rows: 10 %>
     </div>
 
