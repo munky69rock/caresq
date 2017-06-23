@@ -18,7 +18,6 @@
         data[$("meta[name=csrf-param]").attr('content')] = $("meta[name=csrf-token]").attr('content');
 
         $self.find('.fa').toggleClass('like');
-        console.dir(like);
         if (like) {
           $self.find('.count').text(count - 1);
           $.ajax({
