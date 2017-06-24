@@ -130,7 +130,8 @@ CREATE TABLE tags (
     id BIGSERIAL PRIMARY KEY,
     value character varying NOT NULL,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    count integer DEFAULT 0 NOT NULL
 );
 
 -- Name: users; Type: TABLE
@@ -273,5 +274,6 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170615015848'),
 ('20170621161212'),
 ('20170621170304'),
-('20170623092457');
+('20170623092457'),
+('20170623182130');
 

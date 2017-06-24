@@ -1,5 +1,10 @@
-@import "../../../assets/stylesheets/settings";
-$choices-button-icon-path: '../../../../node_modules/choices.js/assets/icons';
-$choices-primary-color: $cs-primary-color;
-$choices-border-radius-item: 3px;
-@import '../../../../node_modules/choices.js/assets/styles/scss/choices';
+@import "../../select2/select2";
+
+.select2.select2-container {
+  width: 100% !important;
+  display: block;
+}
+
+.select2-container--default .select2-selection--multiple {
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}

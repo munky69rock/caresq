@@ -1,17 +1,13 @@
+<%= content_for :javascript do %>
+  <%= javascript_pack_tag 'post_tags', 'data-turbolinks-track': 'reload' %>
+<% end %>
+
+<%= content_for :css do %>
+  <%= stylesheet_pack_tag 'styles/post_tags', 'data-turbolinks-track': 'reload' %>
+<% end %>
+
 <div class="container">
   <%= title '質問を編集する' %>
 
-  <%= form_for @post, url: modify_post_path, method: :patch do |f| %>
-    <div class="form-group">
-      <%= f.label :title %>
-      <%= f.text_field :title, autofocus: true, class: 'form-control' %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :body %>
-      <%= f.text_area :body, class: 'form-control', rows: 10 %>
-    </div>
-
-    <%= f.submit '編集する', class: 'btn btn-primary' %>
-  <% end %>
+  <%= render partial: 'includes/post_form', locals: { post: @post, url: modify_post_path, method: :patch } %>
 </div>

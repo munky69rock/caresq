@@ -10,6 +10,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'activerecord-clean-db-structure'
+gem 'activerecord-import'
 gem 'aws-sdk', '~> 2'
 gem 'bootstrap', '~> 4.0.0.alpha6'
 gem 'carrierwave', '~> 1.0'

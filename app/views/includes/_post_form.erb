@@ -1,8 +1,11 @@
 <%
-  if local_assigns[:class].nil?
-    options = {}
-  else
+  if local_assigns.key?(:class)
     options = { html: { class: local_assigns[:class] } }
+  else
+    options = {}
+  end
+  %i[url method].each do |key|
+    options[key] = local_assigns[key] if local_assigns.key?(key)
   end
 %>
 
@@ -14,7 +17,7 @@
 
   <div class="form-group">
     <%= label :tags, :values, 'タグ' %>
-    <%= select :tags, :values, Tag.all.collect{ |t| [t.value, t.id] }, {}, { class: 'form-control hidden', multiple: true } %>
+    <%= select :tags, :values, options_for_select(Tag.all.pluck(:value), post.try(:tags).try(:pluck, :value) || []), {}, { class: 'form-control', multiple: true } %>
   </div>
 
   <div class="form-group">
